@@ -13,6 +13,16 @@
 		7701CA8227DD1DF200E1C9F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA8127DD1DF200E1C9F1 /* Preview Assets.xcassets */; };
 		7701CA8927DD1F3200E1C9F1 /* TabMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA8827DD1F3200E1C9F1 /* TabMenuView.swift */; };
 		7701CA8B27DD211E00E1C9F1 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA8A27DD211E00E1C9F1 /* ARView.swift */; };
+		7701CA9527DFB9A000E1C9F1 /* flower_bed.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA8D27DFB9A000E1C9F1 /* flower_bed.usdz */; };
+		7701CA9627DFB9A000E1C9F1 /* fender_stratocaster.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA8E27DFB9A000E1C9F1 /* fender_stratocaster.usdz */; };
+		7701CA9727DFB9A000E1C9F1 /* chair_swan.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA8F27DFB9A000E1C9F1 /* chair_swan.usdz */; };
+		7701CA9827DFB9A000E1C9F1 /* flower_tulip.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA9027DFB9A000E1C9F1 /* flower_tulip.usdz */; };
+		7701CA9927DFB9A000E1C9F1 /* redfish.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA9127DFB9A000E1C9F1 /* redfish.usdz */; };
+		7701CA9A27DFB9A000E1C9F1 /* horse.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA9227DFB9A000E1C9F1 /* horse.usdz */; };
+		7701CA9B27DFB9A000E1C9F1 /* cup_saucer_set.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA9327DFB9A000E1C9F1 /* cup_saucer_set.usdz */; };
+		7701CA9C27DFB9A000E1C9F1 /* tv_retro.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA9427DFB9A000E1C9F1 /* tv_retro.usdz */; };
+		7701CA9E27DFBA5100E1C9F1 /* ThumbnailGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA9D27DFBA5100E1C9F1 /* ThumbnailGenerator.swift */; };
+		7701CAA027DFC44A00E1C9F1 /* LibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA9F27DFC44A00E1C9F1 /* LibraryModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +33,16 @@
 		7701CA8127DD1DF200E1C9F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7701CA8827DD1F3200E1C9F1 /* TabMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuView.swift; sourceTree = "<group>"; };
 		7701CA8A27DD211E00E1C9F1 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
+		7701CA8D27DFB9A000E1C9F1 /* flower_bed.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = flower_bed.usdz; sourceTree = "<group>"; };
+		7701CA8E27DFB9A000E1C9F1 /* fender_stratocaster.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = fender_stratocaster.usdz; sourceTree = "<group>"; };
+		7701CA8F27DFB9A000E1C9F1 /* chair_swan.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = chair_swan.usdz; sourceTree = "<group>"; };
+		7701CA9027DFB9A000E1C9F1 /* flower_tulip.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = flower_tulip.usdz; sourceTree = "<group>"; };
+		7701CA9127DFB9A000E1C9F1 /* redfish.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = redfish.usdz; sourceTree = "<group>"; };
+		7701CA9227DFB9A000E1C9F1 /* horse.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = horse.usdz; sourceTree = "<group>"; };
+		7701CA9327DFB9A000E1C9F1 /* cup_saucer_set.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = cup_saucer_set.usdz; sourceTree = "<group>"; };
+		7701CA9427DFB9A000E1C9F1 /* tv_retro.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = tv_retro.usdz; sourceTree = "<group>"; };
+		7701CA9D27DFBA5100E1C9F1 /* ThumbnailGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGenerator.swift; sourceTree = "<group>"; };
+		7701CA9F27DFC44A00E1C9F1 /* LibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +77,11 @@
 			children = (
 				7701CA7A27DD1DF100E1C9F1 /* RadomApp.swift */,
 				7701CA7C27DD1DF100E1C9F1 /* MainView.swift */,
+				7701CA9F27DFC44A00E1C9F1 /* LibraryModel.swift */,
 				7701CA8827DD1F3200E1C9F1 /* TabMenuView.swift */,
 				7701CA8A27DD211E00E1C9F1 /* ARView.swift */,
+				7701CA9D27DFBA5100E1C9F1 /* ThumbnailGenerator.swift */,
+				7701CA8C27DFB69300E1C9F1 /* 3D Assets */,
 				7701CA7E27DD1DF200E1C9F1 /* Assets.xcassets */,
 				7701CA8027DD1DF200E1C9F1 /* Preview Content */,
 			);
@@ -71,6 +94,21 @@
 				7701CA8127DD1DF200E1C9F1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7701CA8C27DFB69300E1C9F1 /* 3D Assets */ = {
+			isa = PBXGroup;
+			children = (
+				7701CA8F27DFB9A000E1C9F1 /* chair_swan.usdz */,
+				7701CA9327DFB9A000E1C9F1 /* cup_saucer_set.usdz */,
+				7701CA8E27DFB9A000E1C9F1 /* fender_stratocaster.usdz */,
+				7701CA8D27DFB9A000E1C9F1 /* flower_bed.usdz */,
+				7701CA9027DFB9A000E1C9F1 /* flower_tulip.usdz */,
+				7701CA9227DFB9A000E1C9F1 /* horse.usdz */,
+				7701CA9127DFB9A000E1C9F1 /* redfish.usdz */,
+				7701CA9427DFB9A000E1C9F1 /* tv_retro.usdz */,
+			);
+			path = "3D Assets";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,8 +169,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7701CA9527DFB9A000E1C9F1 /* flower_bed.usdz in Resources */,
+				7701CA9927DFB9A000E1C9F1 /* redfish.usdz in Resources */,
+				7701CA9B27DFB9A000E1C9F1 /* cup_saucer_set.usdz in Resources */,
 				7701CA8227DD1DF200E1C9F1 /* Preview Assets.xcassets in Resources */,
+				7701CA9627DFB9A000E1C9F1 /* fender_stratocaster.usdz in Resources */,
+				7701CA9827DFB9A000E1C9F1 /* flower_tulip.usdz in Resources */,
+				7701CA9727DFB9A000E1C9F1 /* chair_swan.usdz in Resources */,
 				7701CA7F27DD1DF200E1C9F1 /* Assets.xcassets in Resources */,
+				7701CA9C27DFB9A000E1C9F1 /* tv_retro.usdz in Resources */,
+				7701CA9A27DFB9A000E1C9F1 /* horse.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,8 +190,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7701CA7D27DD1DF100E1C9F1 /* MainView.swift in Sources */,
+				7701CAA027DFC44A00E1C9F1 /* LibraryModel.swift in Sources */,
 				7701CA8B27DD211E00E1C9F1 /* ARView.swift in Sources */,
 				7701CA8927DD1F3200E1C9F1 /* TabMenuView.swift in Sources */,
+				7701CA9E27DFBA5100E1C9F1 /* ThumbnailGenerator.swift in Sources */,
 				7701CA7B27DD1DF100E1C9F1 /* RadomApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
