@@ -22,9 +22,33 @@ struct MainView: View {
      
     let models = LibraryModels().get()
     
+    @State var openFile = false
+    @State var fileName = ""
     
     var body: some View {
         ScrollView(.vertical) {
+            VStack(spacing: 40) {
+                Button(action: {openFile.toggle()}, label: {
+                    Text("Import File")
+                })
+            }
+            .fileImporter(isPresented: $openFile, allowedContentTypes: [.usdz]) { (res) in
+                do {
+                    let fileUrl = try res.get()
+                    
+                    print(fileUrl)
+                    
+                    // getting filename:
+                    
+                    self.fileName = fileUrl.lastPathComponent
+                    
+                    
+                } catch {
+                    print("error reading file")
+                    print(error.localizedDescription)
+                }
+            }
+            
             LazyVGrid(columns: columns,
                       spacing: 30) {
                 ForEach(0..<models.count) { index in
