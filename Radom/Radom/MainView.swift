@@ -33,7 +33,7 @@ struct MainView: View {
                     ItemButton(model: model) {
                         //TODO: call model metthod to asynch load modelEntity
                         //TODO: select model for placement
-                        print("BrowseView: select")
+                        print("BrowseView: select \(model.name) for placement")
                     }
                 }
             }
@@ -57,7 +57,8 @@ struct ItemButton: View {
             self.action()
         }) {
             //let defaultThumbnail = UIImage(systemName: "questionmark")
-            Image(uiImage: self.model.thumbnailGenerator.thumbnailImage!)
+            //Image(uiImage: self.model.thumbnailGenerator.thumbnailImage!)
+            Image(uiImage: UIImage(systemName: "questionmark.folder")!)
                 .resizable()
                 .frame(height:150)
                 .aspectRatio(1/1, contentMode: .fit)
