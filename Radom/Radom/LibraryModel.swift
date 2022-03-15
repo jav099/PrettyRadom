@@ -52,7 +52,7 @@ struct LibraryModels {
         let flower_bed = LibraryModel(name: "flower_bed", scaleCompensation: 0.32/100)
         flower_bed.genThumbnail()
         
-        let tv_retro = LibraryModel(name: "chair_swan", scaleCompensation: 0.32/100)
+        let tv_retro = LibraryModel(name: "tv_retro", scaleCompensation: 0.32/100)
         tv_retro.genThumbnail()
         
         self.all += [chair_swan, flower_tulip, horse, flower_bed, tv_retro]
