@@ -17,7 +17,6 @@
 		7701CA9627DFB9A000E1C9F1 /* fender_stratocaster.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA8E27DFB9A000E1C9F1 /* fender_stratocaster.usdz */; };
 		7701CA9727DFB9A000E1C9F1 /* chair_swan.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA8F27DFB9A000E1C9F1 /* chair_swan.usdz */; };
 		7701CA9827DFB9A000E1C9F1 /* flower_tulip.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA9027DFB9A000E1C9F1 /* flower_tulip.usdz */; };
-		7701CA9927DFB9A000E1C9F1 /* redfish.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA9127DFB9A000E1C9F1 /* redfish.usdz */; };
 		7701CA9A27DFB9A000E1C9F1 /* horse.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA9227DFB9A000E1C9F1 /* horse.usdz */; };
 		7701CA9B27DFB9A000E1C9F1 /* cup_saucer_set.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA9327DFB9A000E1C9F1 /* cup_saucer_set.usdz */; };
 		7701CA9C27DFB9A000E1C9F1 /* tv_retro.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA9427DFB9A000E1C9F1 /* tv_retro.usdz */; };
@@ -37,7 +36,6 @@
 		7701CA8E27DFB9A000E1C9F1 /* fender_stratocaster.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = fender_stratocaster.usdz; sourceTree = "<group>"; };
 		7701CA8F27DFB9A000E1C9F1 /* chair_swan.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = chair_swan.usdz; sourceTree = "<group>"; };
 		7701CA9027DFB9A000E1C9F1 /* flower_tulip.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = flower_tulip.usdz; sourceTree = "<group>"; };
-		7701CA9127DFB9A000E1C9F1 /* redfish.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = redfish.usdz; sourceTree = "<group>"; };
 		7701CA9227DFB9A000E1C9F1 /* horse.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = horse.usdz; sourceTree = "<group>"; };
 		7701CA9327DFB9A000E1C9F1 /* cup_saucer_set.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = cup_saucer_set.usdz; sourceTree = "<group>"; };
 		7701CA9427DFB9A000E1C9F1 /* tv_retro.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = tv_retro.usdz; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 				7701CA8D27DFB9A000E1C9F1 /* flower_bed.usdz */,
 				7701CA9027DFB9A000E1C9F1 /* flower_tulip.usdz */,
 				7701CA9227DFB9A000E1C9F1 /* horse.usdz */,
-				7701CA9127DFB9A000E1C9F1 /* redfish.usdz */,
 				7701CA9427DFB9A000E1C9F1 /* tv_retro.usdz */,
 			);
 			path = "3D Assets";
@@ -170,7 +167,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7701CA9527DFB9A000E1C9F1 /* flower_bed.usdz in Resources */,
-				7701CA9927DFB9A000E1C9F1 /* redfish.usdz in Resources */,
 				7701CA9B27DFB9A000E1C9F1 /* cup_saucer_set.usdz in Resources */,
 				7701CA8227DD1DF200E1C9F1 /* Preview Assets.xcassets in Resources */,
 				7701CA9627DFB9A000E1C9F1 /* fender_stratocaster.usdz in Resources */,
@@ -328,9 +324,11 @@
 				DEVELOPMENT_TEAM = 3CR4BAHG23;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To use Augmented Reality, this app needs access to your camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "armv7 arkit";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -338,7 +336,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.javierct.Radom;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.wendytao.Radom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -357,9 +355,11 @@
 				DEVELOPMENT_TEAM = 3CR4BAHG23;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To use Augmented Reality, this app needs access to your camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "armv7 arkit";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -367,7 +367,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.javierct.Radom;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.wendytao.Radom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
