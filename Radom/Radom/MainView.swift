@@ -28,9 +28,13 @@ struct MainView: View {
             LazyVGrid(columns: columns,
                       spacing: 30) {
                 ForEach(0..<models.count) { index in
-                    Color(UIColor.secondarySystemFill)
-                        .frame(width: 150, height: 150)
-                        .cornerRadius(8)
+                    let model = models[index]
+                    
+                    ItemButton(model: model) {
+                        //TODO: call model metthod to asynch load modelEntity
+                        //TODO: select model for placement
+                        print("BrowseView: select")
+                    }
                 }
             }
         }
@@ -41,5 +45,25 @@ struct MainView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+    }
+}
+
+struct ItemButton: View {
+    let model: LibraryModel
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action:{
+            self.action()
+        }) {
+            //let defaultThumbnail = UIImage(systemName: "questionmark")
+            Image(uiImage: self.model.thumbnailGenerator.thumbnailImage!)
+                .resizable()
+                .frame(height:150)
+                .aspectRatio(1/1, contentMode: .fit)
+                .background(Color(UIColor.secondarySystemFill))
+                .cornerRadius(8.0)
+        
+        }
     }
 }
