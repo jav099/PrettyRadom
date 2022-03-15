@@ -16,7 +16,7 @@ struct TabMenuView: View {
                     Label("Library", systemImage: "square.grid.2x2")
                 }
 
-            ARView()
+            RealityKitView()
                 .tabItem {
                     Label("AR", systemImage: "camera")
                 }

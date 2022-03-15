@@ -7,8 +7,9 @@
 
 import SwiftUI
 import RealityKit
+import ARKit
 
-struct ARView: View {
+struct RealityKitView: View {
     var body: some View {
         ARViewContainer()
             .edgesIgnoringSafeArea(.all)
@@ -17,7 +18,7 @@ struct ARView: View {
 
 struct ARViewContainer: UIViewRepresentable {
     func makeUIView(context: Context) -> ARView {
-        let arView = ARView(frame: .zero)
+        let arView = ARView()
         return arView
     }
     
@@ -27,8 +28,8 @@ struct ARViewContainer: UIViewRepresentable {
 }
 
 
-struct ARView_Previews: PreviewProvider {
+struct RealityKitView_Previews: PreviewProvider {
     static var previews: some View {
-        ARView()
+        RealityKitView()
     }
 }
