@@ -22,6 +22,7 @@ struct MainView: View {
      
     //let models = LibraryModels().get()
     @ObservedObject var modelFiles = LibraryModels()
+    @EnvironmentObject var placementSettings: PlacementSettings
     
     @State var openFile = false
     @State var fileName = ""
@@ -57,10 +58,8 @@ struct MainView: View {
                     //let model = modelFiles.all[index]
                     
                     ItemButton(model: model) {
-                        //TODO: call model metthod to asynch load modelEntity
-                        //FIXME
                         model.asyncLoadModelEntity()
-                        //TODO: select model for placement
+                        self.placementSettings.selectedModel = model
                         print("BrowseView: select \(model.name) for placement")
                     }
                 

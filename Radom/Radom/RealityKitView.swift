@@ -19,21 +19,22 @@ struct RealityKitView: View {
             ZStack(alignment: .bottom) {
                 ARViewContainer()
                 
-                if self.placementSettings.selectedModel == nil {
-                    //FIXME
-                    MainView()
-                } else {
+                if self.placementSettings.selectedModel != nil {
                     PlacementView()
                 }
-        
+                
+                HStack {
+                   LibraryButton()
+                   Spacer()
+                   ExitButton()
+               }
+                
             }
             .edgesIgnoringSafeArea(.all)
-            
-            ZStack(alignment: .top) {
-                LibraryButton()
-            }
         }
         .navigationBarTitle("Title", displayMode: .inline)
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
         .introspectTabBarController { (UITabBarController) in
             UITabBarController.tabBar.isHidden = true
             uiTabarController = UITabBarController
@@ -74,19 +75,47 @@ struct LibraryButton: View {
                             .buttonStyle(PlainButtonStyle())
                     }
                 }
-                .navigationBarHidden(true)
     
             }
             .frame(width: 50, height: 50)
             .cornerRadius(8.0)
 
         }
-        .padding(.top, 45)
-        .padding(.trailing, 20)
+        .padding()
 
     }
 }
 
+struct ExitButton: View {
+    @State private var isShowingDetailView = false
+    
+    var body: some View {
+        ZStack {
+            
+            HStack() {
+                Color.black.opacity(0.25)
+                
+                NavigationLink(destination: TabMenuView(), isActive: $isShowingDetailView) {
+                    Button(action: {
+                        print("ExitButton pressed")
+                        self.isShowingDetailView = true
+                    }) {
+                        Image(systemName: "xmark")
+                            .font(.system(size: 25))
+                            .foregroundColor(.white)
+                            .buttonStyle(PlainButtonStyle())
+                    }
+                }
+    
+            }
+            .frame(width: 50, height: 50)
+            .cornerRadius(8.0)
+
+        }
+        .padding()
+
+    }
+}
 
 struct RealityKitView_Previews: PreviewProvider {
     static var previews: some View {
