@@ -8,23 +8,38 @@
 import SwiftUI
 import RealityKit
 import ARKit
+import Introspect
 
 struct RealityKitView: View {
+    @State var uiTabarController: UITabBarController?
     @EnvironmentObject var placementSettings: PlacementSettings
 
     var body: some View {
-        ZStack(alignment: .bottom) {
-
-            ARViewContainer()
-
-            if self.placementSettings.selectedModel == nil {
-                //FIXME
-                MainView()
-            } else {
-                PlacementView()
+        NavigationView {
+            ZStack(alignment: .bottom) {
+                ARViewContainer()
+                
+                if self.placementSettings.selectedModel == nil {
+                    //FIXME
+                    MainView()
+                } else {
+                    PlacementView()
+                }
+        
+            }
+            .edgesIgnoringSafeArea(.all)
+            
+            ZStack(alignment: .top) {
+                LibraryButton()
             }
         }
-        .edgesIgnoringSafeArea(.all)
+        .navigationBarTitle("Title", displayMode: .inline)
+        .introspectTabBarController { (UITabBarController) in
+            UITabBarController.tabBar.isHidden = true
+            uiTabarController = UITabBarController
+        }.onDisappear{
+            uiTabarController?.tabBar.isHidden = false
+        }
     }
 }
 
@@ -36,6 +51,39 @@ struct ARViewContainer: UIViewRepresentable {
     
     func updateUIView(_ uiView: ARView, context: Context) {
         //empty for now
+    }
+}
+
+struct LibraryButton: View {
+    @State private var isShowingDetailView = false
+    
+    var body: some View {
+        ZStack {
+            
+            HStack() {
+                Color.black.opacity(0.25)
+                
+                NavigationLink(destination: MainView(), isActive: $isShowingDetailView) {
+                    Button(action: {
+                        print("LibraryButton pressed")
+                        self.isShowingDetailView = true
+                    }) {
+                        Image(systemName: "plus")
+                            .font(.system(size: 25))
+                            .foregroundColor(.white)
+                            .buttonStyle(PlainButtonStyle())
+                    }
+                }
+                .navigationBarHidden(true)
+    
+            }
+            .frame(width: 50, height: 50)
+            .cornerRadius(8.0)
+
+        }
+        .padding(.top, 45)
+        .padding(.trailing, 20)
+
     }
 }
 
