@@ -20,10 +20,12 @@ struct MainView: View {
     let columns = [GridItem(.fixed(150)),
                    GridItem(.fixed(150))]
      
-    let models = LibraryModels().get()
+    //let models = LibraryModels().get()
+    @ObservedObject var modelFiles = LibraryModels()
     
     @State var openFile = false
     @State var fileName = ""
+    @State var files = [URL]()
     
     var body: some View {
         ScrollView(.vertical) {
@@ -39,10 +41,9 @@ struct MainView: View {
                     print(fileUrl)
                     
                     // getting filename:
-                    
                     self.fileName = fileUrl.lastPathComponent
-                    
-                    
+                    files.append(saveFile(url: fileUrl))
+                    modelFiles.updateLibrary()
                 } catch {
                     print("error reading file")
                     print(error.localizedDescription)
@@ -51,8 +52,8 @@ struct MainView: View {
             
             LazyVGrid(columns: columns,
                       spacing: 30) {
-                ForEach(0..<models.count) { index in
-                    let model = models[index]
+                ForEach(modelFiles.all, id: \.name) { model in
+                    //let model = modelFiles.all[index]
                     
                     ItemButton(model: model) {
                         //TODO: call model metthod to asynch load modelEntity
@@ -64,12 +65,46 @@ struct MainView: View {
         }
         .padding()
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
     }
+}
+
+func getDocumentsDirectory() -> URL {
+    return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+}
+
+
+func saveFile (url: URL) -> URL{
+    if (CFURLStartAccessingSecurityScopedResource(url as CFURL)) { // <- here
+        
+        let fileData = try? Data.init(contentsOf: url)
+        let fileName = url.lastPathComponent
+        
+        let actualPath = getDocumentsDirectory().appendingPathComponent(fileName)
+        do {
+            try fileData?.write(to: actualPath)
+            if(fileData == nil){
+                print("Permission error!")
+            }
+            else {
+                print("Success.")
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        CFURLStopAccessingSecurityScopedResource(url as CFURL) // <- and here
+        return actualPath
+    }
+    else {
+        print("Permission error!")
+        return getDocumentsDirectory().appendingPathComponent(url.lastPathComponent)
+    }
+    
 }
 
 struct ItemButton: View {
