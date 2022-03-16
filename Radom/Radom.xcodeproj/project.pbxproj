@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		19C1553827E1393500C37F3F /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 19C1553727E1393500C37F3F /* FocusEntity */; };
-		19C1553A27E139B000C37F3F /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1553927E139B000C37F3F /* CustomARView.swift */; };
 		19C1553C27E1464300C37F3F /* PlacementSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1553B27E1464300C37F3F /* PlacementSettings.swift */; };
 		19C1553E27E18F2700C37F3F /* PlacementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1553D27E18F2700C37F3F /* PlacementView.swift */; };
 		7701CA7B27DD1DF100E1C9F1 /* RadomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA7A27DD1DF100E1C9F1 /* RadomApp.swift */; };
@@ -31,7 +30,6 @@
 
 /* Begin PBXFileReference section */
 		0B4BE2E8B655D00615410319 /* Pods_Radom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		19C1553927E139B000C37F3F /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
 		19C1553B27E1464300C37F3F /* PlacementSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettings.swift; sourceTree = "<group>"; };
 		19C1553D27E18F2700C37F3F /* PlacementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementView.swift; sourceTree = "<group>"; };
 		36398023D169F0939C9BD2C1 /* Pods-Radom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radom.release.xcconfig"; path = "Target Support Files/Pods-Radom/Pods-Radom.release.xcconfig"; sourceTree = "<group>"; };
@@ -51,6 +49,7 @@
 		7701CA9427DFB9A000E1C9F1 /* tv_retro.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = tv_retro.usdz; sourceTree = "<group>"; };
 		7701CA9D27DFBA5100E1C9F1 /* ThumbnailGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGenerator.swift; sourceTree = "<group>"; };
 		7701CA9F27DFC44A00E1C9F1 /* LibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModel.swift; sourceTree = "<group>"; };
+		B278269E27E2567E004BBE8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2E10852578328C6EE2AF40E /* Pods-Radom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radom.debug.xcconfig"; path = "Target Support Files/Pods-Radom/Pods-Radom.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +87,7 @@
 		7701CA7927DD1DF100E1C9F1 /* Radom */ = {
 			isa = PBXGroup;
 			children = (
+				B278269E27E2567E004BBE8C /* Info.plist */,
 				7701CA7A27DD1DF100E1C9F1 /* RadomApp.swift */,
 				7701CA9F27DFC44A00E1C9F1 /* LibraryModel.swift */,
 				7701CA7C27DD1DF100E1C9F1 /* MainView.swift */,
@@ -95,7 +95,6 @@
 				7701CA8A27DD211E00E1C9F1 /* RealityKitView.swift */,
 				19C1553B27E1464300C37F3F /* PlacementSettings.swift */,
 				19C1553D27E18F2700C37F3F /* PlacementView.swift */,
-				19C1553927E139B000C37F3F /* CustomARView.swift */,
 				7701CA9D27DFBA5100E1C9F1 /* ThumbnailGenerator.swift */,
 				7701CA8C27DFB69300E1C9F1 /* 3D Assets */,
 				7701CA7E27DD1DF200E1C9F1 /* Assets.xcassets */,
@@ -277,7 +276,6 @@
 				7701CA8927DD1F3200E1C9F1 /* TabMenuView.swift in Sources */,
 				19C1553C27E1464300C37F3F /* PlacementSettings.swift in Sources */,
 				7701CA9E27DFBA5100E1C9F1 /* ThumbnailGenerator.swift in Sources */,
-				19C1553A27E139B000C37F3F /* CustomARView.swift in Sources */,
 				7701CA7B27DD1DF100E1C9F1 /* RadomApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,9 +408,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Radom/Preview Content\"";
-				DEVELOPMENT_TEAM = 7JB5SRB6V4;
+				DEVELOPMENT_TEAM = L56LQA3744;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Radom/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To use Augmented Reality, this app needs access to your camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -426,7 +425,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chenjane.Radom;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.pstathul.Radom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -443,9 +442,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Radom/Preview Content\"";
-				DEVELOPMENT_TEAM = 7JB5SRB6V4;
+				DEVELOPMENT_TEAM = L56LQA3744;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Radom/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To use Augmented Reality, this app needs access to your camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -459,7 +459,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chenjane.Radom;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.pstathul.Radom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

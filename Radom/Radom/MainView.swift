@@ -119,7 +119,7 @@ struct ItemButton: View {
         }) {
             //let defaultThumbnail = UIImage(systemName: "questionmark")
             //Image(uiImage: self.model.thumbnailGenerator.thumbnailImage!)
-            Image(uiImage: UIImage(systemName: "questionmark.folder")!)
+            Image(uiImage: model.thumbnail!)
                 .resizable()
                 .frame(height:150)
                 .aspectRatio(1/1, contentMode: .fit)
