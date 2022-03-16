@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct RadomApp: App {
+    // FIXME
+    @StateObject var placementSettings = PlacementSettings()
     var body: some Scene {
         WindowGroup {
             TabMenuView()
+                .environmentObject(placementSettings)
         }
     }
 }

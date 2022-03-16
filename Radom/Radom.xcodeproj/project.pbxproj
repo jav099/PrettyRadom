@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19C1553827E1393500C37F3F /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 19C1553727E1393500C37F3F /* FocusEntity */; };
+		19C1553A27E139B000C37F3F /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1553927E139B000C37F3F /* CustomARView.swift */; };
+		19C1553C27E1464300C37F3F /* PlacementSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1553B27E1464300C37F3F /* PlacementSettings.swift */; };
+		19C1553E27E18F2700C37F3F /* PlacementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1553D27E18F2700C37F3F /* PlacementView.swift */; };
 		7701CA7B27DD1DF100E1C9F1 /* RadomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA7A27DD1DF100E1C9F1 /* RadomApp.swift */; };
 		7701CA7D27DD1DF100E1C9F1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA7C27DD1DF100E1C9F1 /* MainView.swift */; };
 		7701CA7F27DD1DF200E1C9F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA7E27DD1DF200E1C9F1 /* Assets.xcassets */; };
 		7701CA8227DD1DF200E1C9F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA8127DD1DF200E1C9F1 /* Preview Assets.xcassets */; };
 		7701CA8927DD1F3200E1C9F1 /* TabMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA8827DD1F3200E1C9F1 /* TabMenuView.swift */; };
-		7701CA8B27DD211E00E1C9F1 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA8A27DD211E00E1C9F1 /* ARView.swift */; };
+		7701CA8B27DD211E00E1C9F1 /* RealityKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA8A27DD211E00E1C9F1 /* RealityKitView.swift */; };
 		7701CA9527DFB9A000E1C9F1 /* flower_bed.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA8D27DFB9A000E1C9F1 /* flower_bed.usdz */; };
 		7701CA9627DFB9A000E1C9F1 /* fender_stratocaster.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA8E27DFB9A000E1C9F1 /* fender_stratocaster.usdz */; };
 		7701CA9727DFB9A000E1C9F1 /* chair_swan.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA8F27DFB9A000E1C9F1 /* chair_swan.usdz */; };
@@ -22,16 +26,22 @@
 		7701CA9C27DFB9A000E1C9F1 /* tv_retro.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA9427DFB9A000E1C9F1 /* tv_retro.usdz */; };
 		7701CA9E27DFBA5100E1C9F1 /* ThumbnailGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA9D27DFBA5100E1C9F1 /* ThumbnailGenerator.swift */; };
 		7701CAA027DFC44A00E1C9F1 /* LibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA9F27DFC44A00E1C9F1 /* LibraryModel.swift */; };
+		90377A2CF84A53D99BE9C8EA /* Pods_Radom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4BE2E8B655D00615410319 /* Pods_Radom.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B4BE2E8B655D00615410319 /* Pods_Radom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19C1553927E139B000C37F3F /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
+		19C1553B27E1464300C37F3F /* PlacementSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettings.swift; sourceTree = "<group>"; };
+		19C1553D27E18F2700C37F3F /* PlacementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementView.swift; sourceTree = "<group>"; };
+		36398023D169F0939C9BD2C1 /* Pods-Radom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radom.release.xcconfig"; path = "Target Support Files/Pods-Radom/Pods-Radom.release.xcconfig"; sourceTree = "<group>"; };
 		7701CA7727DD1DF100E1C9F1 /* Radom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7701CA7A27DD1DF100E1C9F1 /* RadomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadomApp.swift; sourceTree = "<group>"; };
 		7701CA7C27DD1DF100E1C9F1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7701CA7E27DD1DF200E1C9F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7701CA8127DD1DF200E1C9F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7701CA8827DD1F3200E1C9F1 /* TabMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuView.swift; sourceTree = "<group>"; };
-		7701CA8A27DD211E00E1C9F1 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
+		7701CA8A27DD211E00E1C9F1 /* RealityKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityKitView.swift; sourceTree = "<group>"; };
 		7701CA8D27DFB9A000E1C9F1 /* flower_bed.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = flower_bed.usdz; sourceTree = "<group>"; };
 		7701CA8E27DFB9A000E1C9F1 /* fender_stratocaster.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = fender_stratocaster.usdz; sourceTree = "<group>"; };
 		7701CA8F27DFB9A000E1C9F1 /* chair_swan.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = chair_swan.usdz; sourceTree = "<group>"; };
@@ -41,6 +51,7 @@
 		7701CA9427DFB9A000E1C9F1 /* tv_retro.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = tv_retro.usdz; sourceTree = "<group>"; };
 		7701CA9D27DFBA5100E1C9F1 /* ThumbnailGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGenerator.swift; sourceTree = "<group>"; };
 		7701CA9F27DFC44A00E1C9F1 /* LibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModel.swift; sourceTree = "<group>"; };
+		B2E10852578328C6EE2AF40E /* Pods-Radom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radom.debug.xcconfig"; path = "Target Support Files/Pods-Radom/Pods-Radom.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19C1553827E1393500C37F3F /* FocusEntity in Frameworks */,
+				90377A2CF84A53D99BE9C8EA /* Pods_Radom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +72,8 @@
 			children = (
 				7701CA7927DD1DF100E1C9F1 /* Radom */,
 				7701CA7827DD1DF100E1C9F1 /* Products */,
+				DE7B15DBB8138721353EC93E /* Pods */,
+				FA23855D62FD3E6A78BC24BD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,10 +89,13 @@
 			isa = PBXGroup;
 			children = (
 				7701CA7A27DD1DF100E1C9F1 /* RadomApp.swift */,
-				7701CA7C27DD1DF100E1C9F1 /* MainView.swift */,
 				7701CA9F27DFC44A00E1C9F1 /* LibraryModel.swift */,
+				7701CA7C27DD1DF100E1C9F1 /* MainView.swift */,
 				7701CA8827DD1F3200E1C9F1 /* TabMenuView.swift */,
-				7701CA8A27DD211E00E1C9F1 /* ARView.swift */,
+				7701CA8A27DD211E00E1C9F1 /* RealityKitView.swift */,
+				19C1553B27E1464300C37F3F /* PlacementSettings.swift */,
+				19C1553D27E18F2700C37F3F /* PlacementView.swift */,
+				19C1553927E139B000C37F3F /* CustomARView.swift */,
 				7701CA9D27DFBA5100E1C9F1 /* ThumbnailGenerator.swift */,
 				7701CA8C27DFB69300E1C9F1 /* 3D Assets */,
 				7701CA7E27DD1DF200E1C9F1 /* Assets.xcassets */,
@@ -108,6 +126,23 @@
 			path = "3D Assets";
 			sourceTree = "<group>";
 		};
+		DE7B15DBB8138721353EC93E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B2E10852578328C6EE2AF40E /* Pods-Radom.debug.xcconfig */,
+				36398023D169F0939C9BD2C1 /* Pods-Radom.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FA23855D62FD3E6A78BC24BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0B4BE2E8B655D00615410319 /* Pods_Radom.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -115,15 +150,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7701CA8527DD1DF200E1C9F1 /* Build configuration list for PBXNativeTarget "Radom" */;
 			buildPhases = (
+				607569091C942C52A743D6C7 /* [CP] Check Pods Manifest.lock */,
 				7701CA7327DD1DF100E1C9F1 /* Sources */,
 				7701CA7427DD1DF100E1C9F1 /* Frameworks */,
 				7701CA7527DD1DF100E1C9F1 /* Resources */,
+				61D441502ED506EA4660968E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Radom;
+			packageProductDependencies = (
+				19C1553727E1393500C37F3F /* FocusEntity */,
+			);
 			productName = Radom;
 			productReference = 7701CA7727DD1DF100E1C9F1 /* Radom.app */;
 			productType = "com.apple.product-type.application";
@@ -152,6 +192,9 @@
 				Base,
 			);
 			mainGroup = 7701CA6E27DD1DF100E1C9F1;
+			packageReferences = (
+				19C1553627E1393500C37F3F /* XCRemoteSwiftPackageReference "FocusEntity" */,
+			);
 			productRefGroup = 7701CA7827DD1DF100E1C9F1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -180,6 +223,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		607569091C942C52A743D6C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Radom-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		61D441502ED506EA4660968E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Radom/Pods-Radom-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Radom/Pods-Radom-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Radom/Pods-Radom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7701CA7327DD1DF100E1C9F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -187,9 +272,12 @@
 			files = (
 				7701CA7D27DD1DF100E1C9F1 /* MainView.swift in Sources */,
 				7701CAA027DFC44A00E1C9F1 /* LibraryModel.swift in Sources */,
-				7701CA8B27DD211E00E1C9F1 /* ARView.swift in Sources */,
+				19C1553E27E18F2700C37F3F /* PlacementView.swift in Sources */,
+				7701CA8B27DD211E00E1C9F1 /* RealityKitView.swift in Sources */,
 				7701CA8927DD1F3200E1C9F1 /* TabMenuView.swift in Sources */,
+				19C1553C27E1464300C37F3F /* PlacementSettings.swift in Sources */,
 				7701CA9E27DFBA5100E1C9F1 /* ThumbnailGenerator.swift in Sources */,
+				19C1553A27E139B000C37F3F /* CustomARView.swift in Sources */,
 				7701CA7B27DD1DF100E1C9F1 /* RadomApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,6 +403,7 @@
 		};
 		7701CA8627DD1DF200E1C9F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2E10852578328C6EE2AF40E /* Pods-Radom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -347,6 +436,7 @@
 		};
 		7701CA8727DD1DF200E1C9F1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36398023D169F0939C9BD2C1 /* Pods-Radom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -399,6 +489,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		19C1553627E1393500C37F3F /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxxfrazer/FocusEntity";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		19C1553727E1393500C37F3F /* FocusEntity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 19C1553627E1393500C37F3F /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			productName = FocusEntity;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7701CA6F27DD1DF100E1C9F1 /* Project object */;
 }

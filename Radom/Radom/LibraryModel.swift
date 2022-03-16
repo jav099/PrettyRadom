@@ -13,7 +13,9 @@ class LibraryModel {
     var name: String
     var thumbnail: UIImage?
     var modelEntity: ModelEntity?
-    var scaleCompensation: Float?
+    var scaleCompensation: Float  //KL: remove ?
+    
+    private var cancellable: AnyCancellable?
     
     @ObservedObject var thumbnailGenerator = ThumbnailGenerator()
     
@@ -32,6 +34,23 @@ class LibraryModel {
     //TODO: probably create a method to generate the thumbnails and have the observed object uncommented
     
     //TODO: Create a method to async load modelEntity
+    func asyncLoadModelEntity() {
+        let filename = self.name + ".usdz"
+        
+        self.cancellable = ModelEntity.loadModelAsync(named: filename)
+            .sink(receiveCompletion: {loadCompletion in
+                switch loadCompletion{
+                case .failure(let error): print("Unable to load modelEntity for \(filename). Error: \(error.localizedDescription)")
+                case .finished:
+                    break
+                }
+            }, receiveValue: {modelEntity in
+                self.modelEntity = modelEntity
+                self.modelEntity?.scale *= self.scaleCompensation
+                
+                print("modelEntity for \(self.name) has been loaded.")
+                })
+    }
 }
 
 func listAllFiles() -> [URL]{

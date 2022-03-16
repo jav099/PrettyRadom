@@ -57,6 +57,8 @@ struct MainView: View {
                     
                     ItemButton(model: model) {
                         //TODO: call model metthod to asynch load modelEntity
+                        //FIXME
+                        model.asyncLoadModelEntity()
                         //TODO: select model for placement
                         print("BrowseView: select \(model.name) for placement")
                     }
