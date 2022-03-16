@@ -21,13 +21,15 @@ struct RealityKitView: View {
                 
                 if self.placementSettings.selectedModel != nil {
                     PlacementView()
-                }
+                } else {
                 
-                HStack {
-                   LibraryButton()
-                   Spacer()
-                   ExitButton()
-               }
+                    HStack {
+                       LibraryButton()
+                       Spacer()
+                       ExitButton()
+                   }
+                    
+                }
                 
             }
             .edgesIgnoringSafeArea(.all)
