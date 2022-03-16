@@ -33,6 +33,7 @@ struct MainView: View {
                 Button(action: {openFile.toggle()}, label: {
                     Text("Import File")
                 })
+
             }
             .fileImporter(isPresented: $openFile, allowedContentTypes: [.usdz]) { (res) in
                 do {
@@ -62,6 +63,7 @@ struct MainView: View {
                         //TODO: select model for placement
                         print("BrowseView: select \(model.name) for placement")
                     }
+                
                 }
             }
         }
@@ -119,12 +121,17 @@ struct ItemButton: View {
         }) {
             //let defaultThumbnail = UIImage(systemName: "questionmark")
             //Image(uiImage: self.model.thumbnailGenerator.thumbnailImage!)
-            Image(uiImage: model.thumbnail!)
-                .resizable()
-                .frame(height:150)
-                .aspectRatio(1/1, contentMode: .fit)
-                .background(Color(UIColor.secondarySystemFill))
-                .cornerRadius(8.0)
+            VStack {
+                Image(uiImage: model.thumbnail!)
+                    .resizable()
+                    .frame(height:150)
+                    .aspectRatio(1/1, contentMode: .fit)
+                    .background(Color(UIColor.secondarySystemFill))
+                    .cornerRadius(8.0)
+                Text(model.name)
+                    .foregroundColor(.black)
+                    .font(.body)
+            }
         
         }
     }
