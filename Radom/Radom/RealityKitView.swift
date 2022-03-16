@@ -10,9 +10,21 @@ import RealityKit
 import ARKit
 
 struct RealityKitView: View {
+    @EnvironmentObject var placementSettings: PlacementSettings
+
     var body: some View {
-        ARViewContainer()
-            .edgesIgnoringSafeArea(.all)
+        ZStack(alignment: .bottom) {
+
+            ARViewContainer()
+
+            if self.placementSettings.selectedModel == nil {
+                //FIXME
+                MainView()
+            } else {
+                PlacementView()
+            }
+        }
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -31,5 +43,6 @@ struct ARViewContainer: UIViewRepresentable {
 struct RealityKitView_Previews: PreviewProvider {
     static var previews: some View {
         RealityKitView()
+            .environmentObject(PlacementSettings())
     }
 }

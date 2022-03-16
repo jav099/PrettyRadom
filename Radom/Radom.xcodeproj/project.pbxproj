@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19C1553827E1393500C37F3F /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 19C1553727E1393500C37F3F /* FocusEntity */; };
+		19C1553A27E139B000C37F3F /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1553927E139B000C37F3F /* CustomARView.swift */; };
+		19C1553C27E1464300C37F3F /* PlacementSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1553B27E1464300C37F3F /* PlacementSettings.swift */; };
+		19C1553E27E18F2700C37F3F /* PlacementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1553D27E18F2700C37F3F /* PlacementView.swift */; };
 		7701CA7B27DD1DF100E1C9F1 /* RadomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA7A27DD1DF100E1C9F1 /* RadomApp.swift */; };
 		7701CA7D27DD1DF100E1C9F1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA7C27DD1DF100E1C9F1 /* MainView.swift */; };
 		7701CA7F27DD1DF200E1C9F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA7E27DD1DF200E1C9F1 /* Assets.xcassets */; };
 		7701CA8227DD1DF200E1C9F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA8127DD1DF200E1C9F1 /* Preview Assets.xcassets */; };
 		7701CA8927DD1F3200E1C9F1 /* TabMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA8827DD1F3200E1C9F1 /* TabMenuView.swift */; };
-		7701CA8B27DD211E00E1C9F1 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA8A27DD211E00E1C9F1 /* ARView.swift */; };
+		7701CA8B27DD211E00E1C9F1 /* RealityKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA8A27DD211E00E1C9F1 /* RealityKitView.swift */; };
 		7701CA9527DFB9A000E1C9F1 /* flower_bed.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA8D27DFB9A000E1C9F1 /* flower_bed.usdz */; };
 		7701CA9627DFB9A000E1C9F1 /* fender_stratocaster.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA8E27DFB9A000E1C9F1 /* fender_stratocaster.usdz */; };
 		7701CA9727DFB9A000E1C9F1 /* chair_swan.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA8F27DFB9A000E1C9F1 /* chair_swan.usdz */; };
@@ -25,13 +29,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19C1553927E139B000C37F3F /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
+		19C1553B27E1464300C37F3F /* PlacementSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettings.swift; sourceTree = "<group>"; };
+		19C1553D27E18F2700C37F3F /* PlacementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementView.swift; sourceTree = "<group>"; };
 		7701CA7727DD1DF100E1C9F1 /* Radom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7701CA7A27DD1DF100E1C9F1 /* RadomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadomApp.swift; sourceTree = "<group>"; };
 		7701CA7C27DD1DF100E1C9F1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7701CA7E27DD1DF200E1C9F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7701CA8127DD1DF200E1C9F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7701CA8827DD1F3200E1C9F1 /* TabMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuView.swift; sourceTree = "<group>"; };
-		7701CA8A27DD211E00E1C9F1 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
+		7701CA8A27DD211E00E1C9F1 /* RealityKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityKitView.swift; sourceTree = "<group>"; };
 		7701CA8D27DFB9A000E1C9F1 /* flower_bed.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = flower_bed.usdz; sourceTree = "<group>"; };
 		7701CA8E27DFB9A000E1C9F1 /* fender_stratocaster.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = fender_stratocaster.usdz; sourceTree = "<group>"; };
 		7701CA8F27DFB9A000E1C9F1 /* chair_swan.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = chair_swan.usdz; sourceTree = "<group>"; };
@@ -48,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19C1553827E1393500C37F3F /* FocusEntity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,10 +82,13 @@
 			isa = PBXGroup;
 			children = (
 				7701CA7A27DD1DF100E1C9F1 /* RadomApp.swift */,
-				7701CA7C27DD1DF100E1C9F1 /* MainView.swift */,
 				7701CA9F27DFC44A00E1C9F1 /* LibraryModel.swift */,
+				7701CA7C27DD1DF100E1C9F1 /* MainView.swift */,
 				7701CA8827DD1F3200E1C9F1 /* TabMenuView.swift */,
-				7701CA8A27DD211E00E1C9F1 /* ARView.swift */,
+				7701CA8A27DD211E00E1C9F1 /* RealityKitView.swift */,
+				19C1553B27E1464300C37F3F /* PlacementSettings.swift */,
+				19C1553D27E18F2700C37F3F /* PlacementView.swift */,
+				19C1553927E139B000C37F3F /* CustomARView.swift */,
 				7701CA9D27DFBA5100E1C9F1 /* ThumbnailGenerator.swift */,
 				7701CA8C27DFB69300E1C9F1 /* 3D Assets */,
 				7701CA7E27DD1DF200E1C9F1 /* Assets.xcassets */,
@@ -124,6 +135,9 @@
 			dependencies = (
 			);
 			name = Radom;
+			packageProductDependencies = (
+				19C1553727E1393500C37F3F /* FocusEntity */,
+			);
 			productName = Radom;
 			productReference = 7701CA7727DD1DF100E1C9F1 /* Radom.app */;
 			productType = "com.apple.product-type.application";
@@ -152,6 +166,9 @@
 				Base,
 			);
 			mainGroup = 7701CA6E27DD1DF100E1C9F1;
+			packageReferences = (
+				19C1553627E1393500C37F3F /* XCRemoteSwiftPackageReference "FocusEntity" */,
+			);
 			productRefGroup = 7701CA7827DD1DF100E1C9F1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -187,9 +204,12 @@
 			files = (
 				7701CA7D27DD1DF100E1C9F1 /* MainView.swift in Sources */,
 				7701CAA027DFC44A00E1C9F1 /* LibraryModel.swift in Sources */,
-				7701CA8B27DD211E00E1C9F1 /* ARView.swift in Sources */,
+				19C1553E27E18F2700C37F3F /* PlacementView.swift in Sources */,
+				7701CA8B27DD211E00E1C9F1 /* RealityKitView.swift in Sources */,
 				7701CA8927DD1F3200E1C9F1 /* TabMenuView.swift in Sources */,
+				19C1553C27E1464300C37F3F /* PlacementSettings.swift in Sources */,
 				7701CA9E27DFBA5100E1C9F1 /* ThumbnailGenerator.swift in Sources */,
+				19C1553A27E139B000C37F3F /* CustomARView.swift in Sources */,
 				7701CA7B27DD1DF100E1C9F1 /* RadomApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,7 +341,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Radom/Preview Content\"";
-				DEVELOPMENT_TEAM = 7JB5SRB6V4;
+				DEVELOPMENT_TEAM = 3G4D7CCSQ6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To use Augmented Reality, this app needs access to your camera";
@@ -331,13 +351,13 @@
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "armv7 arkit";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chenjane.Radom;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.kliubiyk.Radom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -353,7 +373,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Radom/Preview Content\"";
-				DEVELOPMENT_TEAM = 7JB5SRB6V4;
+				DEVELOPMENT_TEAM = 3G4D7CCSQ6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To use Augmented Reality, this app needs access to your camera";
@@ -363,13 +383,13 @@
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "armv7 arkit";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chenjane.Radom;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.kliubiyk.Radom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -399,6 +419,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		19C1553627E1393500C37F3F /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxxfrazer/FocusEntity";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		19C1553727E1393500C37F3F /* FocusEntity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 19C1553627E1393500C37F3F /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			productName = FocusEntity;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7701CA6F27DD1DF100E1C9F1 /* Project object */;
 }
