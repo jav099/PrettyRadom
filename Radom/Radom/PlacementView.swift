@@ -4,9 +4,7 @@
 //
 //  Created by Grace Liu on 3/15/22.
 //
-
 import SwiftUI
-
 struct PlacementView: View {
     @EnvironmentObject var placementSettings: PlacementSettings
     
@@ -29,7 +27,6 @@ struct PlacementView: View {
         .padding(.bottom, 30)
     }
 }
-
 struct PlacementButton: View{
     let systemIconName: String
     let action: () -> Void

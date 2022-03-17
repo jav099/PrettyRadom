@@ -4,11 +4,9 @@
 //
 //  Created by Grace Liu on 3/15/22.
 //
-
 import SwiftUI
 import RealityKit
 import Combine
-
 class PlacementSettings: ObservableObject{
     
     // When the user selects a model in library, this property is set
@@ -28,7 +26,7 @@ class PlacementSettings: ObservableObject{
             print("Setting confirmed to \(model.name)")
         }
     }
+    
+    // This property retains the cancellable object for SceneEvents.Update subscriber
+    var sceneObserver: Cancellable?
 }
-
-
-//KL: need to add Model.swift file

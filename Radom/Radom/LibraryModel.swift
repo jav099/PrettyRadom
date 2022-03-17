@@ -86,35 +86,35 @@ class LibraryModels: ObservableObject {
         
         var filePath = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
         var fileUrl = URL(fileURLWithPath: filePath)
-        let chair_swan = LibraryModel(name: "chair_swan", scaleCompensation: 0.32/100, url: fileUrl)
+        let chair_swan = LibraryModel(name: "chair_swan", scaleCompensation: 30/100, url: fileUrl)
         existingModels.insert("chair_swan")
         chair_swan.genThumbnail()
         modelCount += 1
         
         filePath = Bundle.main.path(forResource: "flower_tulip", ofType: "usdz")!
         fileUrl = URL(fileURLWithPath: filePath)
-        let flower_tulip = LibraryModel(name: "flower_tulip", scaleCompensation: 0.32/100, url: fileUrl)
+        let flower_tulip = LibraryModel(name: "flower_tulip", scaleCompensation: 30/100, url: fileUrl)
         existingModels.insert("flower_tulip")
         flower_tulip.genThumbnail()
         modelCount += 1
         
         filePath = Bundle.main.path(forResource: "horse", ofType: "usdz")!
         fileUrl = URL(fileURLWithPath: filePath)
-        let horse = LibraryModel(name: "horse", scaleCompensation: 0.32/100, url: fileUrl)
+        let horse = LibraryModel(name: "horse", scaleCompensation: 30/100, url: fileUrl)
         existingModels.insert("horse")
         horse.genThumbnail()
         modelCount += 1
         
         filePath = Bundle.main.path(forResource: "flower_bed", ofType: "usdz")!
         fileUrl = URL(fileURLWithPath: filePath)
-        let flower_bed = LibraryModel(name: "flower_bed", scaleCompensation: 0.32/100, url: fileUrl)
+        let flower_bed = LibraryModel(name: "flower_bed", scaleCompensation: 30/100, url: fileUrl)
         existingModels.insert("flower_bed")
         flower_bed.genThumbnail()
         modelCount += 1
         
         filePath = Bundle.main.path(forResource: "tv_retro", ofType: "usdz")!
         fileUrl = URL(fileURLWithPath: filePath)
-        let tv_retro = LibraryModel(name: "tv_retro", scaleCompensation: 0.32/100, url: fileUrl)
+        let tv_retro = LibraryModel(name: "tv_retro", scaleCompensation: 30/100, url: fileUrl)
         existingModels.insert("tv_retro")
         tv_retro.genThumbnail()
         modelCount += 1

@@ -10,6 +10,7 @@
 		19C1553827E1393500C37F3F /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 19C1553727E1393500C37F3F /* FocusEntity */; };
 		19C1553C27E1464300C37F3F /* PlacementSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1553B27E1464300C37F3F /* PlacementSettings.swift */; };
 		19C1553E27E18F2700C37F3F /* PlacementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1553D27E18F2700C37F3F /* PlacementView.swift */; };
+		34F141D127E2B48200086619 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F141D027E2B48200086619 /* CustomARView.swift */; };
 		7701CA7B27DD1DF100E1C9F1 /* RadomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA7A27DD1DF100E1C9F1 /* RadomApp.swift */; };
 		7701CA7D27DD1DF100E1C9F1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA7C27DD1DF100E1C9F1 /* MainView.swift */; };
 		7701CA7F27DD1DF200E1C9F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA7E27DD1DF200E1C9F1 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		0B4BE2E8B655D00615410319 /* Pods_Radom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19C1553B27E1464300C37F3F /* PlacementSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettings.swift; sourceTree = "<group>"; };
 		19C1553D27E18F2700C37F3F /* PlacementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementView.swift; sourceTree = "<group>"; };
+		34F141D027E2B48200086619 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
 		36398023D169F0939C9BD2C1 /* Pods-Radom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radom.release.xcconfig"; path = "Target Support Files/Pods-Radom/Pods-Radom.release.xcconfig"; sourceTree = "<group>"; };
 		7701CA7727DD1DF100E1C9F1 /* Radom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7701CA7A27DD1DF100E1C9F1 /* RadomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadomApp.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				7701CA9F27DFC44A00E1C9F1 /* LibraryModel.swift */,
 				7701CA7C27DD1DF100E1C9F1 /* MainView.swift */,
 				7701CA8827DD1F3200E1C9F1 /* TabMenuView.swift */,
+				34F141D027E2B48200086619 /* CustomARView.swift */,
 				7701CA8A27DD211E00E1C9F1 /* RealityKitView.swift */,
 				19C1553B27E1464300C37F3F /* PlacementSettings.swift */,
 				19C1553D27E18F2700C37F3F /* PlacementView.swift */,
@@ -273,6 +276,7 @@
 				7701CAA027DFC44A00E1C9F1 /* LibraryModel.swift in Sources */,
 				19C1553E27E18F2700C37F3F /* PlacementView.swift in Sources */,
 				7701CA8B27DD211E00E1C9F1 /* RealityKitView.swift in Sources */,
+				34F141D127E2B48200086619 /* CustomARView.swift in Sources */,
 				7701CA8927DD1F3200E1C9F1 /* TabMenuView.swift in Sources */,
 				19C1553C27E1464300C37F3F /* PlacementSettings.swift in Sources */,
 				7701CA9E27DFBA5100E1C9F1 /* ThumbnailGenerator.swift in Sources */,
@@ -408,7 +412,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Radom/Preview Content\"";
-				DEVELOPMENT_TEAM = 7JB5SRB6V4;
+				DEVELOPMENT_TEAM = 8JT88W2MB5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Radom/Info.plist;
@@ -432,7 +436,7 @@
 					"-weak_framework",
 					RealityFoundation,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chenjane.Radom;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.etzalel.Radom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -449,7 +453,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Radom/Preview Content\"";
-				DEVELOPMENT_TEAM = 7JB5SRB6V4;
+				DEVELOPMENT_TEAM = 8JT88W2MB5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Radom/Info.plist;
@@ -473,7 +477,7 @@
 					"-weak_framework",
 					RealityFoundation,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chenjane.Radom;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.etzalel.Radom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
