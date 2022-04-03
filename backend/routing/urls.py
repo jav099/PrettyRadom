@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('getusers/', views.getusers, name='getusers'),
     path('postuser/', views.postuser, name='postuser'),
+    path('getmodesl/'), views.getmodels, name='getmodels'),
 ]
