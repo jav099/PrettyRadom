@@ -78,10 +78,35 @@ def getmodels(request):
     if request.method != 'GET':
         return HttpResponse(status=404)
 
+    json_data = json.loads(request.body)
+    username = json_data['username']
+
     cursor = connection.cursor()
-    cursor.execute('SELECT description, price, modelName, fileurl FROM models WHERE public = true ORDER BY username DESC;')
+    s = 'SELECT description, price, modelName, fileurl FROM models WHERE(username=(%s) AND public = true);'
+    cursor.execute(s, [username])
     rows = cursor.fetchall()
 
     response = {}
     response['models'] = rows
     return JsonResponse(response)
+
+def login(request):
+    if request.method != 'GET':
+        return HttpResponse(status=404)
+   
+    json_data = json.loads(request.body)
+    username = json_data['username']
+    password = json_data['password']
+
+    cursor = connection.cursor()
+    s = 'SELECT password FROM models WHERE(username=(%s));'
+    cursor.execute(s, [username])
+
+    correctPassword = cursor.fetchone()
+
+    if correctPassword[0] == password:
+        return JsonResponse({"status": "success"})
+    else:
+        return JsonResponse({"status": "failure"})
+
+

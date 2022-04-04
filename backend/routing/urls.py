@@ -23,4 +23,5 @@ urlpatterns = [
     path('postuser/', views.postuser, name='postuser'),
     path('getmodels/', views.getmodels, name='getmodels'),
     path('postmodel/', views.postmodel, name='postmodel'),
+    path('login/', views.login, name='login'),
 ]
