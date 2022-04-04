@@ -4,6 +4,9 @@ from django.db import connection
 
 from django.views.decorators.csrf import csrf_exempt
 import json
+import os, time
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 
 @csrf_exempt
 def postuser(request):
@@ -28,7 +31,7 @@ def getusers(request):
         return HttpResponse(status=404)
     
     cursor = connection.cursor()
-    cursor.execute('SELECT DISTINCT username FROM models WHERE public = true ORDER BY username DESC;')
+    cursor.execute('SELECT DISTINCT username, location FROM models WHERE public = true ORDER BY username DESC;')
     rows = cursor.fetchall()
 
     response = {}
@@ -46,11 +49,12 @@ def postmodel(request):
     description = request.POST.get("description")
     price = request.POST.get("price")
     cursor = connection.cursor()
-    cursor.execute('SELECT password, public, location FROM models WHERE username=(username) VALUES ''(%s);', (username) )
+    s = 'SELECT password, public, location FROM models WHERE(username=(%s));'
+    cursor.execute(s, [username])
     rows = cursor.fetchone()
-    password = rows['password']
-    public = rows['public']
-    location = rows['location']
+    password = rows[0]
+    public = rows[1]
+    location = rows[2]
     modelName = request.POST.get('modelName')
 
 
