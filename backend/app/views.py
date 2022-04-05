@@ -12,16 +12,22 @@ from django.core.files.storage import FileSystemStorage
 def postuser(request):
     if request.method != 'POST':
         return HttpResponse(status=404)
-    json_data = json.loads(request.body)
-    username = json_data['username']
-    password = json_data['password']
-    location = json_data['location']
-    public = json_data['public']
+
+    username = request.POST.get("username")
+    password = request.POST.get("password")
+    location = request.POST.get("location")
+    public = request.POST.get("public")
     price = ''
     fileurl = ''
     description = ''
 
     cursor = connection.cursor()
+    s = 'SELECT username FROM models WHERE (username = (%s));'
+    cursor.execute(s, [username])
+    rows = cursor.fetchone()
+    if rows:
+        return HttpResponse(status=400)
+    
     cursor.execute('INSERT INTO models (username, password, public, location, price, fileurl, description) VALUES '
                    '(%s, %s, %s, %s, %s, %s, %s);', (username, password, public, location, price, fileurl, description))
     return JsonResponse({})
@@ -42,7 +48,7 @@ def getusers(request):
 @csrf_exempt
 def postmodel(request):
     if request.method != 'POST':
-        return HttpResponse(status=400)
+        return HttpResponse(status=404)
 
     # loading form-encoded data
     username = request.POST.get("username")
@@ -67,7 +73,7 @@ def postmodel(request):
         filename = fs.save(filename, content)
         fileurl = fs.url(filename)
     else:
-        fileurl = None
+        return HttpResponse(status=400)
 
     cursor.execute('INSERT INTO models (username, description, price, password, public, location, modelName, fileurl) VALUES '
                    '(%s, %s, %s, %s, %s, %s, %s, %s);', (username, description, price, password, public, location, modelName, fileurl))
@@ -82,7 +88,7 @@ def getmodels(request):
     username = json_data['username']
 
     cursor = connection.cursor()
-    s = 'SELECT description, price, modelName, fileurl FROM models WHERE(username=(%s) AND public = true);'
+    s = 'SELECT description, price, modelName, fileurl FROM models WHERE(username=(%s) AND modelName IS NOT NULL);'
     cursor.execute(s, [username])
     rows = cursor.fetchall()
 
@@ -90,23 +96,55 @@ def getmodels(request):
     response['models'] = rows
     return JsonResponse(response)
 
+@csrf_exempt
 def login(request):
-    if request.method != 'GET':
+    if request.method != 'POST':
         return HttpResponse(status=404)
    
-    json_data = json.loads(request.body)
-    username = json_data['username']
-    password = json_data['password']
+    username = request.POST.get('username')
+    password = request.POST.get('password')
 
     cursor = connection.cursor()
     s = 'SELECT password FROM models WHERE(username=(%s));'
     cursor.execute(s, [username])
 
     correctPassword = cursor.fetchone()
+    if not correctPassword:
+        return HttpResponse(status=403)
 
     if correctPassword[0] == password:
         return JsonResponse({"status": "success"})
     else:
-        return JsonResponse({"status": "failure"})
+        return HttpResponse(status=403)
 
+def getprofile(request):
+    if request.method != 'GET':
+        return HttpResponse(status=404)
+
+    json_data = json.loads(request.body)
+    username = json_data['username']
+
+    cursor = connection.cursor()
+    s = 'SELECT location, public FROM models WHERE(username=(%s));'
+    cursor.execute(s, [username])
+    profile_info = cursor.fetchone()
+
+    response = {}
+    response['profile'] = profile_info
+
+    return JsonResponse(response)
+
+@csrf_exempt
+def setprivacy(request):
+    if request.method != 'POST':
+        return HttpResponse(status=404)
+
+    username = request.POST.get('username')
+    public = request.POST.get('public')
+    
+    cursor = connection.cursor()
+    s = 'UPDATE models SET public = (%s) WHERE username = (%s);'
+    cursor.execute(s, [public, username])
+
+    return JsonResponse({})
 

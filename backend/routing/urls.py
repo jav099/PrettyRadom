@@ -24,4 +24,6 @@ urlpatterns = [
     path('getmodels/', views.getmodels, name='getmodels'),
     path('postmodel/', views.postmodel, name='postmodel'),
     path('login/', views.login, name='login'),
+    path('getprofile/', views.getprofile, name='getprofile'),
+    path('setprivacy/', views.setprivacy, name='setprivacy'),
 ]
