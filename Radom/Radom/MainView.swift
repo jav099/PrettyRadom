@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MainView: View {
     let colors: [Color] = [.red, .green, .blue, .yellow, .purple]
+    //Searchbar
+    @State private var searchText = ""
     
     @ViewBuilder
     func ColorView() -> some View {
@@ -28,47 +30,65 @@ struct MainView: View {
     @State var fileName = ""
     @State var files = [URL]()
     
-    var body: some View {
-        ScrollView(.vertical) {
-            VStack(spacing: 40) {
-                Button(action: {openFile.toggle()}, label: {
-                    Text("Import File")
-                })
 
-            }
-            .fileImporter(isPresented: $openFile, allowedContentTypes: [.usdz]) { (res) in
-                do {
-                    let fileUrl = try res.get()
-                    
-                    print(fileUrl)
-                    
-                    // getting filename:
-                    self.fileName = fileUrl.lastPathComponent
-                    files.append(saveFile(url: fileUrl))
-                    modelFiles.updateLibrary()
-                } catch {
-                    print("error reading file")
-                    print(error.localizedDescription)
+    
+    var body: some View {
+        NavigationView{
+            ScrollView(.vertical) {
+                VStack(spacing: 40) {
+                    Button(action: {openFile.toggle()}, label: {
+                        Text("Import File")
+                    })
+
                 }
-            }
-            
-            LazyVGrid(columns: columns,
-                      spacing: 30) {
-                ForEach(modelFiles.all, id: \.name) { model in
-                    //let model = modelFiles.all[index]
-                    
-                    ItemButton(model: model) {
-                        model.asyncLoadModelEntity()
-                        self.placementSettings.selectedModel = model
-                        print("BrowseView: select \(model.name) for placement")
+                .fileImporter(isPresented: $openFile, allowedContentTypes: [.usdz]) { (res) in
+                    do {
+                        let fileUrl = try res.get()
+                        
+                        print(fileUrl)
+                        
+                        // getting filename:
+                        self.fileName = fileUrl.lastPathComponent
+                        files.append(saveFile(url: fileUrl))
+                        modelFiles.updateLibrary()
+                    } catch {
+                        print("error reading file")
+                        print(error.localizedDescription)
                     }
-                
                 }
+                
+                LazyVGrid(columns: columns,
+                          spacing: 30) {
+                    ForEach(searchResults, id: \.name) { model in
+                        //let model = modelFiles.all[index]
+                        
+                        ItemButton(model: model) {
+                            model.asyncLoadModelEntity()
+                            self.placementSettings.selectedModel = model
+                            print("BrowseView: select \(model.name) for placement")
+                        }
+                        // get search information
+                    }
+                }
+                .searchable(text: $searchText)
             }
+            .padding()
         }
-        .padding()
+        .navigationBarHidden(true)
+
     }
     
+    var searchResults: [LibraryModel] {
+//        var namelist: [String] = []
+//        modelFiles.all.forEach {model in
+//            namelist.append(model.name)
+//        }
+        if searchText.isEmpty {
+            return modelFiles.all
+        } else {
+            return modelFiles.all.filter({$0.name.contains(searchText)})
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
