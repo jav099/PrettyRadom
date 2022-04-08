@@ -10,6 +10,7 @@ import SwiftUI
 struct SignUpView: View {
     @State var user = ""
     @State var password = ""
+    @State var loggedIn = true
     
     var body: some View {
         VStack{
@@ -49,7 +50,7 @@ struct SignUpView: View {
             .padding(.top,25)
             
             // change destination to log in!!
-            NavigationLink(destination: TabMenuView()) {
+            NavigationLink(destination: TabMenuView(username: $user, loggedIn: $loggedIn)) {
                 Text("Sign Up")
                 .frame(minWidth: 0, maxWidth: 300)
                 .padding()

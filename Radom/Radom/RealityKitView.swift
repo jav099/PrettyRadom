@@ -12,6 +12,8 @@ import Introspect
 struct RealityKitView: View {
     @State var uiTabarController: UITabBarController?
     @EnvironmentObject var placementSettings: PlacementSettings
+    @Binding var username: String
+    @Binding var loggedIn: Bool
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
@@ -24,7 +26,7 @@ struct RealityKitView: View {
                     HStack {
                        LibraryButton()
                        Spacer()
-                       ExitButton()
+                       ExitButton(username: $username, loggedIn: $loggedIn)
                    }
                     
                 }
@@ -123,6 +125,8 @@ struct LibraryButton: View {
 }
 struct ExitButton: View {
     @State private var isShowingDetailView = false
+    @Binding var username: String
+    @Binding var loggedIn: Bool
     
     var body: some View {
         ZStack {
@@ -130,7 +134,7 @@ struct ExitButton: View {
             HStack() {
                 Color.black.opacity(0.25)
                 
-                NavigationLink(destination: TabMenuView(), isActive: $isShowingDetailView) {
+                NavigationLink(destination: TabMenuView(username: $username, loggedIn: $loggedIn), isActive: $isShowingDetailView) {
                     Button(action: {
                         print("ExitButton pressed")
                         self.isShowingDetailView = true
@@ -149,9 +153,10 @@ struct ExitButton: View {
         .padding()
     }
 }
-struct RealityKitView_Previews: PreviewProvider {
-    static var previews: some View {
-        RealityKitView()
-            .environmentObject(PlacementSettings())
-    }
-}
+
+//struct RealityKitView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RealityKitView()
+//            .environmentObject(PlacementSettings())
+//    }
+//}

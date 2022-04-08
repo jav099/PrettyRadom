@@ -9,6 +9,8 @@ import SwiftUI
 
 
 struct TabMenuView: View {
+    @Binding var username: String
+    @Binding var loggedIn: Bool
 
     var body: some View {
         NavigationView {
@@ -18,9 +20,14 @@ struct TabMenuView: View {
                         Label("Library", systemImage: "square.grid.2x2")
                     }
 
-                RealityKitView()
+                RealityKitView(username: $username, loggedIn: $loggedIn)
                     .tabItem {
                         Label("AR", systemImage: "camera")
+                    }
+
+                ProfileView(loggedIn: $loggedIn, username: $username)
+                    .tabItem {
+                        Label("Profile", systemImage: "person.crop.circle")
                     }
             }
         }
@@ -32,8 +39,8 @@ struct TabMenuView: View {
 }
 
 
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabMenuView()
-    }
-}
+//struct MainView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TabMenuView()   // testing with ikea
+//    }
+//}

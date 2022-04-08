@@ -26,6 +26,8 @@
 		7701CA9C27DFB9A000E1C9F1 /* tv_retro.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 7701CA9427DFB9A000E1C9F1 /* tv_retro.usdz */; };
 		7701CA9E27DFBA5100E1C9F1 /* ThumbnailGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA9D27DFBA5100E1C9F1 /* ThumbnailGenerator.swift */; };
 		7701CAA027DFC44A00E1C9F1 /* LibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA9F27DFC44A00E1C9F1 /* LibraryModel.swift */; };
+		7849AC242800F27600925BE0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7849AC232800F27600925BE0 /* ProfileView.swift */; };
+		7849AC262800F28F00925BE0 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7849AC252800F28F00925BE0 /* ProfileStore.swift */; };
 		90377A2CF84A53D99BE9C8EA /* Pods_Radom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4BE2E8B655D00615410319 /* Pods_Radom.framework */; };
 		F53EEACF2800C59300181967 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53EEACE2800C59300181967 /* FirstView.swift */; };
 		F53EEAD12800C5B800181967 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53EEAD02800C5B800181967 /* SignUpView.swift */; };
@@ -53,6 +55,8 @@
 		7701CA9427DFB9A000E1C9F1 /* tv_retro.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = tv_retro.usdz; sourceTree = "<group>"; };
 		7701CA9D27DFBA5100E1C9F1 /* ThumbnailGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGenerator.swift; sourceTree = "<group>"; };
 		7701CA9F27DFC44A00E1C9F1 /* LibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModel.swift; sourceTree = "<group>"; };
+		7849AC232800F27600925BE0 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		7849AC252800F28F00925BE0 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
 		B278269E27E2567E004BBE8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2E10852578328C6EE2AF40E /* Pods-Radom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radom.debug.xcconfig"; path = "Target Support Files/Pods-Radom/Pods-Radom.debug.xcconfig"; sourceTree = "<group>"; };
 		F53EEACE2800C59300181967 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 				7701CA8C27DFB69300E1C9F1 /* 3D Assets */,
 				7701CA7E27DD1DF200E1C9F1 /* Assets.xcassets */,
 				7701CA8027DD1DF200E1C9F1 /* Preview Content */,
+				7849AC232800F27600925BE0 /* ProfileView.swift */,
+				7849AC252800F28F00925BE0 /* ProfileStore.swift */,
 			);
 			path = Radom;
 			sourceTree = "<group>";
@@ -279,9 +285,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F53EEACF2800C59300181967 /* FirstView.swift in Sources */,
+				7849AC262800F28F00925BE0 /* ProfileStore.swift in Sources */,
 				7701CA7D27DD1DF100E1C9F1 /* MainView.swift in Sources */,
 				7701CAA027DFC44A00E1C9F1 /* LibraryModel.swift in Sources */,
 				19C1553E27E18F2700C37F3F /* PlacementView.swift in Sources */,
+				7849AC242800F27600925BE0 /* ProfileView.swift in Sources */,
 				7701CA8B27DD211E00E1C9F1 /* RealityKitView.swift in Sources */,
 				F53EEAD12800C5B800181967 /* SignUpView.swift in Sources */,
 				34F141D127E2B48200086619 /* CustomARView.swift in Sources */,
@@ -420,7 +428,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Radom/Preview Content\"";
-				DEVELOPMENT_TEAM = A59JQH5ABA;
+				DEVELOPMENT_TEAM = 7JB5SRB6V4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Radom/Info.plist;
@@ -444,7 +452,7 @@
 					"-weak_framework",
 					RealityFoundation,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.wendyytao.Radom;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chenjaneRadom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -461,7 +469,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Radom/Preview Content\"";
-				DEVELOPMENT_TEAM = A59JQH5ABA;
+				DEVELOPMENT_TEAM = 7JB5SRB6V4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Radom/Info.plist;
@@ -485,7 +493,7 @@
 					"-weak_framework",
 					RealityFoundation,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.wendyytao.Radom;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chenjaneRadom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

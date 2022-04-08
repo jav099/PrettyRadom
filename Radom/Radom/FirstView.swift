@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct FirstView : View {
+    @State var loggedIn = false
+    @State var username = ""
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -26,7 +29,7 @@ struct FirstView : View {
                     .font(.title)
                 }
                 // change destination to login page!!
-                NavigationLink(destination: TabMenuView()) {
+                NavigationLink(destination: TabMenuView(username: $username, loggedIn: $loggedIn)) {
                     Text("Log in")
                     .frame(minWidth: 0, maxWidth: 300)
                     .padding()
@@ -35,7 +38,7 @@ struct FirstView : View {
                     .cornerRadius(40)
                     .font(.title)
                 }
-                NavigationLink(destination: TabMenuView()) {
+                NavigationLink(destination: TabMenuView(username: $username, loggedIn: $loggedIn)) {
                     Text("Continue as Guest")
                     .frame(minWidth: 0, maxWidth: 300)
                     .padding()
@@ -52,7 +55,7 @@ struct FirstView : View {
 
 struct FirstView_Previews: PreviewProvider {
     static var previews: some View {
-        FirstView()
+        FirstView(loggedIn: false, username: "")    // testing
     }
 }
 
