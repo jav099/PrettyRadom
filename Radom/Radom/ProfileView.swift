@@ -29,7 +29,7 @@ struct ProfileLoggedInView: View {
     let testUsername = "emily"
     
     func loadData() {
-        store.getProfile(testUsername)
+        store.getProfile(username)
         self.isPublic = store.profile.isPublic
         self.location = store.profile.location
     }
@@ -38,7 +38,7 @@ struct ProfileLoggedInView: View {
         ScrollView(.vertical) {
             VStack() {
                 HStack {
-                    Text(testUsername)
+                    Text(username)
                         .padding()
                         .font(.system(size: 22, weight: .semibold)).lineLimit(2)
                 }
@@ -73,9 +73,8 @@ struct ProfileLoggedInView: View {
             }
             .onAppear(perform: loadData)
             .onDisappear {
-                let newProfile = Profile(username: testUsername, location: store.profile.location, isPublic: self.isPublic)
+                let newProfile = Profile(username: username, location: store.profile.location, isPublic: self.isPublic)
                 store.setPrivacy(newProfile)
-                store.getProfile(testUsername)
             }
         }
     }
