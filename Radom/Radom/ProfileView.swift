@@ -12,12 +12,11 @@ struct ProfileView: View {
     @Binding var username: String
     
     var body: some View {
-        ProfileLoggedInView(username: $username)
-//        if loggedIn {
-//            ProfileLoggedInView(username: $username)
-//        } else {
-//            FirstView(loggedIn: self.loggedIn, username: self.username)
-//        }
+        if loggedIn {
+            ProfileLoggedInView(username: $username)
+        } else {
+            FirstView(loggedIn: self.loggedIn, username: self.username)
+        }
     }
     
 }
