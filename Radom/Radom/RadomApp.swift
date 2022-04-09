@@ -13,7 +13,7 @@ struct RadomApp: App {
     @StateObject var placementSettings = PlacementSettings()
     var body: some Scene {
         WindowGroup {
-            TabMenuView()
+            FirstView()
                 .environmentObject(placementSettings)
         }
     }
