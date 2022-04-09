@@ -28,6 +28,7 @@
 		7701CAA027DFC44A00E1C9F1 /* LibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7701CA9F27DFC44A00E1C9F1 /* LibraryModel.swift */; };
 		7849AC242800F27600925BE0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7849AC232800F27600925BE0 /* ProfileView.swift */; };
 		7849AC262800F28F00925BE0 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7849AC252800F28F00925BE0 /* ProfileStore.swift */; };
+		7849AC282802013800925BE0 /* ModelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7849AC272802013800925BE0 /* ModelStore.swift */; };
 		90377A2CF84A53D99BE9C8EA /* Pods_Radom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4BE2E8B655D00615410319 /* Pods_Radom.framework */; };
 		F53EEACF2800C59300181967 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53EEACE2800C59300181967 /* FirstView.swift */; };
 		F53EEAD12800C5B800181967 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53EEAD02800C5B800181967 /* SignUpView.swift */; };
@@ -57,6 +58,7 @@
 		7701CA9F27DFC44A00E1C9F1 /* LibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModel.swift; sourceTree = "<group>"; };
 		7849AC232800F27600925BE0 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		7849AC252800F28F00925BE0 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
+		7849AC272802013800925BE0 /* ModelStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelStore.swift; sourceTree = "<group>"; };
 		B278269E27E2567E004BBE8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2E10852578328C6EE2AF40E /* Pods-Radom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Radom.debug.xcconfig"; path = "Target Support Files/Pods-Radom/Pods-Radom.debug.xcconfig"; sourceTree = "<group>"; };
 		F53EEACE2800C59300181967 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				7701CA8027DD1DF200E1C9F1 /* Preview Content */,
 				7849AC232800F27600925BE0 /* ProfileView.swift */,
 				7849AC252800F28F00925BE0 /* ProfileStore.swift */,
+				7849AC272802013800925BE0 /* ModelStore.swift */,
 			);
 			path = Radom;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				7701CA7D27DD1DF100E1C9F1 /* MainView.swift in Sources */,
 				7701CAA027DFC44A00E1C9F1 /* LibraryModel.swift in Sources */,
 				19C1553E27E18F2700C37F3F /* PlacementView.swift in Sources */,
+				7849AC282802013800925BE0 /* ModelStore.swift in Sources */,
 				7849AC242800F27600925BE0 /* ProfileView.swift in Sources */,
 				7701CA8B27DD211E00E1C9F1 /* RealityKitView.swift in Sources */,
 				F53EEAD12800C5B800181967 /* SignUpView.swift in Sources */,
