@@ -20,7 +20,7 @@ struct FirstView : View {
                     .foregroundColor(Color.blue)
                 Spacer()
                 NavigationLink(destination: SignUpView()) {
-                    Text("Sign Up")
+                    Text("Sign up")
                     .frame(minWidth: 0, maxWidth: 300)
                     .padding()
                     .foregroundColor(.white)

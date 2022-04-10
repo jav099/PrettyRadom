@@ -35,21 +35,28 @@ struct LoginView : View {
     var body: some View {
         
         ZStack {
-        
             VStack {
                 WelcomeText()
                 UserImage()
+                Text("Username")
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .foregroundColor(.gray)
                 UsernameTextField(username: $username)
+                Text("Password")
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .foregroundColor(.gray)
                 PasswordSecureField(password: $password)
                 
                 Button(action: {loadLogin()}) {
-                    Text("LOGIN")
-                        .font(.headline)
+                    Text("Log in")
                         .foregroundColor(.white)
                         .padding()
                         .frame(width: 220, height: 60)
-                        .background(Color.green)
-                        .cornerRadius(15.0)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color.red, Color.blue]), startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(40)
+                        .font(.title)
                 }
                 if authenticationFailed {
                     InfoIncorrect()
@@ -61,7 +68,7 @@ struct LoginView : View {
                 loginSucceeded()
                 TabMenuView(username: $username, loggedIn: $loggedIn)
             }
-            }
+        }
     }
 }
 
@@ -73,7 +80,7 @@ struct LoginView_Previews : PreviewProvider {
 
 struct WelcomeText : View {
     var body: some View {
-        return Text("Sign in")
+        return Text("Please enter your username and password")
             .font(.largeTitle)
             .fontWeight(.semibold)
             .padding(.bottom, 20)
