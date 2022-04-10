@@ -29,7 +29,7 @@ struct FirstView : View {
                     .font(.title)
                 }
                 // change destination to login page!!
-                NavigationLink(destination: TabMenuView(username: $username, loggedIn: $loggedIn)) {
+                NavigationLink(destination: LoginView()) {
                     Text("Log in")
                     .frame(minWidth: 0, maxWidth: 300)
                     .padding()
