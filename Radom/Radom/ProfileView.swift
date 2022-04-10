@@ -43,7 +43,7 @@ struct ProfileLoggedInView: View {
                         .font(.system(size: 22, weight: .semibold)).lineLimit(2)
                 }
                 HStack {
-                    Text(store.profile.location)
+                    Text(location)
                         .padding(.bottom, 40)
                         .font(.system(size: 20)).lineLimit(2)
                 }
