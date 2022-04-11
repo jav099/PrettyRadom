@@ -29,6 +29,11 @@ struct TabMenuView: View {
                     .tabItem {
                         Label("Profile", systemImage: "person.crop.circle")
                     }
+                SearchView()
+                    .tabItem{
+                        Image(systemName: "person.2.square.stack")
+                        Text("Search Users")
+                    }
             }
         }
         .navigationBarBackButtonHidden(true)

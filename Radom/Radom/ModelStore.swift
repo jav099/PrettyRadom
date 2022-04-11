@@ -51,14 +51,17 @@ final class ModelStore: ObservableObject {
                 return
             }
             let modelsReceived = jsonObj["models"] as? [[String?]] ?? []
-            self.model = [Model]()
-            
-            for modelEntry in modelsReceived {
-                self.model.append(Model(name: modelEntry[2]!,
-                                        fileUrl: modelEntry[3]!,
-                                        price: modelEntry[1]!,
-                                        description: modelEntry[0]!))
+            DispatchQueue.main.async {
+                self.model = [Model]()
+                
+                for modelEntry in modelsReceived {
+                    self.model.append(Model(name: modelEntry[2]!,
+                                            fileUrl: modelEntry[3]!,
+                                            price: modelEntry[1]!,
+                                            description: modelEntry[0]!))
+                }
             }
+
         }.resume()
         
         sem.wait()
