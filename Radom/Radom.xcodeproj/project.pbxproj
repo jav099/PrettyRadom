@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19C1553827E1393500C37F3F /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 19C1553727E1393500C37F3F /* FocusEntity */; };
+		19AF736F280499A000FA26EB /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 19AF736E280499A000FA26EB /* FocusEntity */; };
+		19AF737328049A1100FA26EB /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AF737228049A1100FA26EB /* SearchView.swift */; };
+		19AF737528049A3700FA26EB /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AF737428049A3700FA26EB /* UserStore.swift */; };
+		19AF737728049A5C00FA26EB /* ListUserRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AF737628049A5C00FA26EB /* ListUserRow.swift */; };
+		19AF737928049A7A00FA26EB /* PublicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AF737828049A7A00FA26EB /* PublicView.swift */; };
 		19C1553C27E1464300C37F3F /* PlacementSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1553B27E1464300C37F3F /* PlacementSettings.swift */; };
 		19C1553E27E18F2700C37F3F /* PlacementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1553D27E18F2700C37F3F /* PlacementView.swift */; };
 		34F141D127E2B48200086619 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F141D027E2B48200086619 /* CustomARView.swift */; };
@@ -39,6 +43,10 @@
 
 /* Begin PBXFileReference section */
 		0B4BE2E8B655D00615410319 /* Pods_Radom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Radom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19AF737228049A1100FA26EB /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		19AF737428049A3700FA26EB /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
+		19AF737628049A5C00FA26EB /* ListUserRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUserRow.swift; sourceTree = "<group>"; };
+		19AF737828049A7A00FA26EB /* PublicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicView.swift; sourceTree = "<group>"; };
 		19C1553B27E1464300C37F3F /* PlacementSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettings.swift; sourceTree = "<group>"; };
 		19C1553D27E18F2700C37F3F /* PlacementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementView.swift; sourceTree = "<group>"; };
 		34F141D027E2B48200086619 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
@@ -76,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19C1553827E1393500C37F3F /* FocusEntity in Frameworks */,
+				19AF736F280499A000FA26EB /* FocusEntity in Frameworks */,
 				90377A2CF84A53D99BE9C8EA /* Pods_Radom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +92,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19B805C72804662100164143 /* Search Content */ = {
+			isa = PBXGroup;
+			children = (
+				19AF737228049A1100FA26EB /* SearchView.swift */,
+				19AF737628049A5C00FA26EB /* ListUserRow.swift */,
+				19AF737828049A7A00FA26EB /* PublicView.swift */,
+				19AF737428049A3700FA26EB /* UserStore.swift */,
+			);
+			path = "Search Content";
+			sourceTree = "<group>";
+		};
 		7701CA6E27DD1DF100E1C9F1 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +135,7 @@
 				F565EB862803728100E93531 /* loginPost.swift */,
 				F565EB8828037F8600E93531 /* SignUpPost.swift */,
 				34F141D027E2B48200086619 /* CustomARView.swift */,
+				19B805C72804662100164143 /* Search Content */,
 				7701CA8A27DD211E00E1C9F1 /* RealityKitView.swift */,
 				19C1553B27E1464300C37F3F /* PlacementSettings.swift */,
 				19C1553D27E18F2700C37F3F /* PlacementView.swift */,
@@ -188,7 +208,7 @@
 			);
 			name = Radom;
 			packageProductDependencies = (
-				19C1553727E1393500C37F3F /* FocusEntity */,
+				19AF736E280499A000FA26EB /* FocusEntity */,
 			);
 			productName = Radom;
 			productReference = 7701CA7727DD1DF100E1C9F1 /* Radom.app */;
@@ -219,7 +239,7 @@
 			);
 			mainGroup = 7701CA6E27DD1DF100E1C9F1;
 			packageReferences = (
-				19C1553627E1393500C37F3F /* XCRemoteSwiftPackageReference "FocusEntity" */,
+				19AF736D280499A000FA26EB /* XCRemoteSwiftPackageReference "FocusEntity" */,
 			);
 			productRefGroup = 7701CA7827DD1DF100E1C9F1 /* Products */;
 			projectDirPath = "";
@@ -297,6 +317,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F53EEACF2800C59300181967 /* FirstView.swift in Sources */,
+				19AF737928049A7A00FA26EB /* PublicView.swift in Sources */,
+				19AF737528049A3700FA26EB /* UserStore.swift in Sources */,
 				7849AC262800F28F00925BE0 /* ProfileStore.swift in Sources */,
 				7701CA7D27DD1DF100E1C9F1 /* MainView.swift in Sources */,
 				F565EB852803727700E93531 /* LoginView.swift in Sources */,
@@ -306,9 +328,11 @@
 				7849AC242800F27600925BE0 /* ProfileView.swift in Sources */,
 				7701CA8B27DD211E00E1C9F1 /* RealityKitView.swift in Sources */,
 				F565EB872803728100E93531 /* loginPost.swift in Sources */,
+				19AF737328049A1100FA26EB /* SearchView.swift in Sources */,
 				F53EEAD12800C5B800181967 /* SignUpView.swift in Sources */,
 				34F141D127E2B48200086619 /* CustomARView.swift in Sources */,
 				F565EB8928037F8600E93531 /* SignUpPost.swift in Sources */,
+				19AF737728049A5C00FA26EB /* ListUserRow.swift in Sources */,
 				7701CA8927DD1F3200E1C9F1 /* TabMenuView.swift in Sources */,
 				19C1553C27E1464300C37F3F /* PlacementSettings.swift in Sources */,
 				7701CA9E27DFBA5100E1C9F1 /* ThumbnailGenerator.swift in Sources */,
@@ -444,7 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Radom/Preview Content\"";
-				DEVELOPMENT_TEAM = A59JQH5ABA;
+				DEVELOPMENT_TEAM = 3G4D7CCSQ6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Radom/Info.plist;
@@ -468,7 +492,7 @@
 					"-weak_framework",
 					RealityFoundation,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.wendyytao.Radom;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.kliubiyk.Radom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -485,7 +509,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Radom/Preview Content\"";
-				DEVELOPMENT_TEAM = A59JQH5ABA;
+				DEVELOPMENT_TEAM = 3G4D7CCSQ6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Radom/Info.plist;
@@ -509,7 +533,7 @@
 					"-weak_framework",
 					RealityFoundation,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.wendyytao.Radom;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.kliubiyk.Radom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -541,7 +565,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		19C1553627E1393500C37F3F /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+		19AF736D280499A000FA26EB /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/maxxfrazer/FocusEntity";
 			requirement = {
@@ -552,9 +576,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		19C1553727E1393500C37F3F /* FocusEntity */ = {
+		19AF736E280499A000FA26EB /* FocusEntity */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 19C1553627E1393500C37F3F /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			package = 19AF736D280499A000FA26EB /* XCRemoteSwiftPackageReference "FocusEntity" */;
 			productName = FocusEntity;
 		};
 /* End XCSwiftPackageProductDependency section */
