@@ -444,7 +444,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Radom/Preview Content\"";
-				DEVELOPMENT_TEAM = 7JB5SRB6V4;
+				DEVELOPMENT_TEAM = A59JQH5ABA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Radom/Info.plist;
@@ -468,7 +468,7 @@
 					"-weak_framework",
 					RealityFoundation,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chenjane.Radom;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.wendyytao.Radom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -485,7 +485,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Radom/Preview Content\"";
-				DEVELOPMENT_TEAM = 7JB5SRB6V4;
+				DEVELOPMENT_TEAM = A59JQH5ABA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Radom/Info.plist;
@@ -509,7 +509,7 @@
 					"-weak_framework",
 					RealityFoundation,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chenjane.Radom;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.wendyytao.Radom;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

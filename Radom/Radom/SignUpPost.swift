@@ -26,11 +26,18 @@ final class SignUpPost: ObservableObject {
     private let serverUrl = "https://35.238.172.242/"
 
     
-    func postuser(usern: String, pass: String) -> Bool {
+    func postuser(usern: String, pass: String, location: String, publicOrNot: Bool) -> Bool {
         let semaphore = DispatchSemaphore (value: 0)
+        var publicInput = "true"
+        if !publicOrNot {
+            publicInput = "false"
+        }
+        
         let parameters: [String: Any] = [
             "username": usern,
-            "password": pass
+            "password": pass,
+            "location": location,
+            "public": publicInput
         ]
         var retx: Bool = false
         guard let apiUrl = URL(string: serverUrl+"postuser/") else {
@@ -56,6 +63,7 @@ final class SignUpPost: ObservableObject {
                     retx = false
                     return
                 } else {
+                    print("postuser: success with location: "+location+", public: "+publicInput)
                     retx = true
                 }
             }

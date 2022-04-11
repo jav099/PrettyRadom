@@ -10,6 +10,8 @@ import SwiftUI
 struct SignUpView: View {
     @State var username = ""
     @State var password = ""
+    @State var location = ""
+    @State var isPublic = true
     @State var loggedIn = true
     
     @ObservedObject var signup = SignUpPost.shared
@@ -17,7 +19,7 @@ struct SignUpView: View {
     @State var createAccountFail: Bool = false
     
     func tryCreateAccount() {
-        let x: Bool = signup.postuser(usern: username, pass: password)
+        let x: Bool = signup.postuser(usern: username, pass: password, location: location, publicOrNot: isPublic)
         if x {
             createAccountSuccess = true
         } else {
@@ -58,7 +60,27 @@ struct SignUpView: View {
                         .background(Color.white)
                         .cornerRadius(5)
                         .foregroundColor(.black)
-                        
+                    
+                    Text("Location (City)")
+                        .font(.caption)
+                        .fontWeight(.bold)
+                        .foregroundColor(.gray)
+                    TextField("location", text:$location)
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(5)
+                        .foregroundColor(.black)
+                    
+                    Text("Would you like to share your models with other users?").font(.system(size: 18, weight: .semibold)).lineLimit(2)
+                    HStack {
+                        if self.isPublic {
+                            Text("Yes").font(.system(size: 16))
+                        } else {
+                            Text("No").font(.system(size: 16))
+                        }
+                        Spacer()
+                        Toggle("", isOn: $isPublic)
+                    }
                 }
                 .padding(.horizontal,25)
                 .padding(.top,25)
