@@ -53,6 +53,8 @@ struct FirstView : View {
                 
           }
         }
+        .navigationBarHidden(true)
+        .navigationTitle("")
         .introspectTabBarController { (UITabBarController) in
             if !showTab {
                 UITabBarController.tabBar.isHidden = true
