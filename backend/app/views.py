@@ -37,7 +37,7 @@ def getusers(request):
         return HttpResponse(status=404)
     
     cursor = connection.cursor()
-    cursor.execute('SELECT DISTINCT username, location FROM models WHERE public = true ORDER BY username DESC;')
+    cursor.execute('SELECT DISTINCT username, location, public FROM models ORDER BY username DESC;')
     rows = cursor.fetchall()
 
     response = {}
@@ -84,8 +84,9 @@ def getmodels(request):
     if request.method != 'GET':
         return HttpResponse(status=404)
 
-    json_data = json.loads(request.body)
-    username = json_data['username']
+    username = request.GET.get('username','')
+    if (username == ''):
+        return HttpResponse(status=404)
 
     cursor = connection.cursor()
     s = 'SELECT description, price, modelName, fileurl FROM models WHERE(username=(%s) AND modelName IS NOT NULL);'
@@ -121,8 +122,9 @@ def getprofile(request):
     if request.method != 'GET':
         return HttpResponse(status=404)
 
-    json_data = json.loads(request.body)
-    username = json_data['username']
+    username = request.GET.get('username', '')
+    if (username == ''):
+        return HttpResponse(status=404)
 
     cursor = connection.cursor()
     s = 'SELECT location, public FROM models WHERE(username=(%s));'
