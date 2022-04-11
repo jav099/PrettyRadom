@@ -14,9 +14,17 @@ def postuser(request):
         return HttpResponse(status=404)
 
     username = request.POST.get("username")
+    if (not username):
+        return HttpResponse(status=403)
     password = request.POST.get("password")
+    if (not password):
+        return HttpResponse(status=403)
     location = request.POST.get("location")
+    if (not location):
+        return HttpResponse(status=403)
     public = request.POST.get("public")
+    if (not public):
+        return HttpResponse(status=403)
     price = ''
     fileurl = ''
     description = ''
