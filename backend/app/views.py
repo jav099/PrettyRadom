@@ -63,17 +63,18 @@ def postmodel(request):
     description = request.POST.get("description")
     price = request.POST.get("price")
     cursor = connection.cursor()
+    modelName = request.POST.get('modelName')
+    if (not username or not description or not price or not modelName):
+        return HttpResponse(status=403)
     s = 'SELECT password, public, location FROM models WHERE(username=(%s));'
     cursor.execute(s, [username])
     rows = cursor.fetchone()
     password = rows[0]
     public = rows[1]
     location = rows[2]
-    modelName = request.POST.get('modelName')
 
 
     
-
     if request.FILES.get("model"):
         content = request.FILES['model']
         filename = modelName+username+".usdz"
