@@ -19,7 +19,7 @@ final class ModelStore: ObservableObject {
     private init() {}                // and make the constructor private so no other
                                      // instances can be created
     
-    @Published private(set) var model = [Model]()
+    var model = [Model]()
 
     private let serverUrl = "https://35.238.172.242/"
 

@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct FirstView : View {
     @State var loggedIn = false
     @State var username = ""
+    @State var showTab: Bool
+    @State var uiTabarController: UITabBarController?
     
     var body: some View {
         NavigationView {
@@ -50,12 +53,20 @@ struct FirstView : View {
                 
           }
         }
+        .introspectTabBarController { (UITabBarController) in
+            if !showTab {
+                UITabBarController.tabBar.isHidden = true
+            }
+            uiTabarController = UITabBarController
+        }.onDisappear{
+            uiTabarController?.tabBar.isHidden = false
+        }
     }
 }
 
 struct FirstView_Previews: PreviewProvider {
     static var previews: some View {
-        FirstView(loggedIn: false, username: "")    // testing
+        FirstView(loggedIn: false, username: "", showTab: true)    // testing
     }
 }
 

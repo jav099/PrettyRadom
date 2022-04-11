@@ -15,7 +15,7 @@ struct ProfileView: View {
         if loggedIn {
             ProfileLoggedInView(username: $username)
         } else {
-            FirstView(loggedIn: self.loggedIn, username: self.username)
+            FirstView(loggedIn: self.loggedIn, username: self.username, showTab: false)
         }
     }
     
