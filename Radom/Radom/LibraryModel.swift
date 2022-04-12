@@ -76,11 +76,11 @@ class LibraryModels: ObservableObject {
     @Published var all: [LibraryModel] = []
     var existingModels: Set = ["Inbox"]
     var modelCount = 0
-
+    var defaultModelsCount: Int
     
     init() {
         
-        updateLibrary()
+        //updateLibrary()
         
         // TODO: will have to populate with models from back end
         
@@ -119,6 +119,7 @@ class LibraryModels: ObservableObject {
         tv_retro.genThumbnail()
         modelCount += 1
         
+        defaultModelsCount = modelCount
         self.all += [chair_swan, flower_tulip, horse, flower_bed, tv_retro]
         
     }
@@ -144,5 +145,62 @@ class LibraryModels: ObservableObject {
                 }
             }
         }
+    }
+    
+    func getModels(username: String) -> [LibraryModel]{
+        var returnVal = [LibraryModel]()
+        let serverUrl = "https://35.238.172.242/"
+        guard let apiUrl = URL(string: serverUrl+"getmodels/?username="+username) else {
+            print("getModels: Bad URL")
+            return returnVal
+        }
+        
+        var request = URLRequest(url: apiUrl)
+        request.httpMethod = "GET"
+        
+        //var userModels = [LibraryModel]()
+        let group = DispatchGroup()
+        group.enter()
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            //TEST
+            guard let data = data, error == nil else {
+                print("getModels: NETWORKING ERROR")
+                return
+            }
+
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                print("getModels: HTTP STATUS: \(httpStatus.statusCode)")
+                return
+            }
+            
+            guard let jsonObj = try? JSONSerialization.jsonObject(with: data) as? [String:Any] else {
+                print("getModels: failed JSON deserialization")
+                return
+            }
+//            let usersReceived = jsonObj["users"] as? [[String?]] ?? []
+            //print("Successfully loaded")
+            let userModelsServer = jsonObj["models"] as? [[Any]] ?? []
+            // access individual value in dictionary
+            DispatchQueue.main.async {
+//                self.users = [Users]()
+//                for userEntry in usersReceived {
+//                    self.users.append(Users(username: userEntry[0]!,
+//                                            location: userEntry[1]!))
+//                    print("getUsers successfully called.")
+//                }
+                
+                for userModel in userModelsServer {
+                    print(userModel[2])
+                    print(userModel[3])
+                    returnVal.append(LibraryModel(name: (userModel[2] as? String)!,
+                                                   scaleCompensation: 30/100,
+                                                   url: URL(fileURLWithPath: (userModel[3] as? String)!)))
+                }
+            }
+            group.leave()
+        }.resume()
+        group.wait()
+        return returnVal
     }
 }

@@ -15,7 +15,7 @@ struct TabMenuView: View {
     var body: some View {
         NavigationView {
             TabView {
-                MainView()
+                MainView(username: $username)
                     .tabItem {
                         Label("Library", systemImage: "square.grid.2x2")
                     }

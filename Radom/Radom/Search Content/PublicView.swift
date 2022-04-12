@@ -65,6 +65,7 @@ struct PublicView: View {
 }
 
 struct PublicModelView: View {
+    //Is this the users username? There is not @State or @Binding
     var username: String
     @ObservedObject var store = ModelStore.shared
     let columns = [GridItem(.fixed(150)),
@@ -84,6 +85,7 @@ struct PublicModelView: View {
                     model.asyncLoadModelEntity()
                     self.placementSettings.selectedModel = model
                     print("BrowseView: select \(model.name) for placement")
+                    //Need to add model to user
                 }
                 // get search information
             }
@@ -92,7 +94,9 @@ struct PublicModelView: View {
     
     // KL: need to modify according to user
     var searchResults: [LibraryModel] {
-        return modelFiles.all
+        var userModels = modelFiles.getModels(username: username)
+        userModels.append(contentsOf: modelFiles.all)
+        return userModels
     }
 }
 

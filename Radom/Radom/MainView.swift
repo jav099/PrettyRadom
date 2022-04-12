@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @Binding var username: String
     let colors: [Color] = [.red, .green, .blue, .yellow, .purple]
     //Searchbar
     @State private var searchText = ""
@@ -30,7 +31,6 @@ struct MainView: View {
     @State var fileName = ""
     @State var files = [URL]()
     
-
     
     var body: some View {
         NavigationView{
@@ -83,20 +83,34 @@ struct MainView: View {
 //        modelFiles.all.forEach {model in
 //            namelist.append(model.name)
 //        }
+        var userModels = modelFiles.getModels(username: username)
+        
+        /*let seconds = 4.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            if searchText.isEmpty {
+                userModels.append(contentsOf: modelFiles.all)
+            } else {
+                userModels.append(contentsOf: modelFiles.all.filter({$0.name.contains(searchText)}))
+            }
+            print(userModels.count)
+        }*/
         if searchText.isEmpty {
-            return modelFiles.all
+            userModels.append(contentsOf: modelFiles.all)
         } else {
-            return modelFiles.all.filter({$0.name.contains(searchText)})
+            userModels.append(contentsOf: modelFiles.all.filter({$0.name.contains(searchText)}))
         }
+        print(userModels.count)
+        
+        return userModels
     }
 }
-
+/*
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(username: $username)
     }
 }
-
+ */
 func getDocumentsDirectory() -> URL {
     return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 }
