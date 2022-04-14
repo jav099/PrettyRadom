@@ -20,11 +20,13 @@ final class ModelStore: ObservableObject {
                                      // instances can be created
     
     var model = [Model]()
-
+    @Published var models = [LibraryModel]()
+    
+    
     private let serverUrl = "https://35.238.172.242/"
 
     func getModels(_ username: String) {
-        let sem = DispatchSemaphore.init(value: 0)
+        //let sem = DispatchSemaphore.init(value: 0)
         guard let apiUrl = URL(string: serverUrl+"getmodels/?username="+username) else {
             print("getModel: Bad URL")
             return
@@ -35,7 +37,7 @@ final class ModelStore: ObservableObject {
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             
-            defer { sem.signal() }
+            //defer { sem.signal() }
             
             guard let data = data, error == nil else {
                 print("getModel: NETWORKING ERROR")
@@ -52,18 +54,23 @@ final class ModelStore: ObservableObject {
             }
             let modelsReceived = jsonObj["models"] as? [[String?]] ?? []
             DispatchQueue.main.async {
-                self.model = [Model]()
+                self.models = [LibraryModel]()
                 
                 for modelEntry in modelsReceived {
-                    self.model.append(Model(name: modelEntry[2]!,
-                                            fileUrl: modelEntry[3]!,
-                                            price: modelEntry[1]!,
-                                            description: modelEntry[0]!))
+                    print(modelEntry[2]!)
+                    print(modelEntry[3]!)
+                    saveFile(url: URL(fileURLWithPath: (modelEntry[3])!))
+                    var temp = LibraryModel(name: (modelEntry[2])!,
+                                            scaleCompensation: 30/100,
+                                            url: URL(fileURLWithPath: (modelEntry[3])!))
+                    temp.genThumbnail()
+                    self.models.append(temp)
+                    print(self.models.count)
                 }
             }
 
         }.resume()
         
-        sem.wait()
+        //sem.wait()
     }
 }

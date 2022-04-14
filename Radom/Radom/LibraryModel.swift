@@ -73,7 +73,9 @@ func listAllFiles() -> [URL]{
 
 
 class LibraryModels: ObservableObject {
+    static let shared = LibraryModels()
     @Published var all: [LibraryModel] = []
+    @Published var models = [LibraryModel]()
     var existingModels: Set = ["Inbox"]
     var modelCount = 0
     var defaultModelsCount: Int
@@ -113,7 +115,12 @@ class LibraryModels: ObservableObject {
         modelCount += 1
         
         filePath = Bundle.main.path(forResource: "tv_retro", ofType: "usdz")!
+        //print(filePath)
+        //print("SPACE")
         fileUrl = URL(fileURLWithPath: filePath)
+        //print(fileUrl)
+        //print("S")
+        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0])
         let tv_retro = LibraryModel(name: "tv_retro", scaleCompensation: 30/100, url: fileUrl)
         existingModels.insert("tv_retro")
         tv_retro.genThumbnail()
@@ -122,6 +129,7 @@ class LibraryModels: ObservableObject {
         defaultModelsCount = modelCount
         self.all += [chair_swan, flower_tulip, horse, flower_bed, tv_retro]
         
+        listAllFiles()
     }
     
     func get() -> [LibraryModel] {
@@ -131,76 +139,167 @@ class LibraryModels: ObservableObject {
     func updateLibrary() {
         let docs = listAllFiles()
         for url in docs {
+            print(url)
             if url.lastPathComponent != "Inbox"{
                 let fullUrl = url.lastPathComponent
                 let fullArr = fullUrl.components(separatedBy: ".")
                 
-                let name = fullArr[0]
+                let name = fullUrl
                 if !existingModels.contains(name) {
                     let model = LibraryModel(name: name, scaleCompensation: 0.32/100, url: url)
                     model.genThumbnail()
                     self.all.append(model)
-                    print(self.all)
+                    print("Update library")
                     modelCount += 1
                 }
             }
         }
+        print(self.all.count)
     }
-    
-    func getModels(username: String) -> [LibraryModel]{
-        var returnVal = [LibraryModel]()
-        let serverUrl = "https://35.238.172.242/"
+    private let serverUrl = "https://35.238.172.242/"
+
+    func getModels(_ username: String) {
+        //let sem = DispatchSemaphore.init(value: 0)
         guard let apiUrl = URL(string: serverUrl+"getmodels/?username="+username) else {
-            print("getModels: Bad URL")
-            return returnVal
+            print("getModel: Bad URL")
+            return
         }
         
         var request = URLRequest(url: apiUrl)
         request.httpMethod = "GET"
-        
-        //var userModels = [LibraryModel]()
-        let group = DispatchGroup()
-        group.enter()
-        
+
         URLSession.shared.dataTask(with: request) { data, response, error in
-            //TEST
+            
+            //defer { sem.signal() }
+            
             guard let data = data, error == nil else {
-                print("getModels: NETWORKING ERROR")
+                print("getModel: NETWORKING ERROR")
                 return
             }
-
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                print("getModels: HTTP STATUS: \(httpStatus.statusCode)")
+                print("getModel: HTTP STATUS: \(httpStatus.statusCode)")
                 return
             }
             
             guard let jsonObj = try? JSONSerialization.jsonObject(with: data) as? [String:Any] else {
-                print("getModels: failed JSON deserialization")
+                print("getModel: failed JSON deserialization")
                 return
             }
-//            let usersReceived = jsonObj["users"] as? [[String?]] ?? []
-            //print("Successfully loaded")
-            let userModelsServer = jsonObj["models"] as? [[Any]] ?? []
-            // access individual value in dictionary
+            let modelsReceived = jsonObj["models"] as? [[String?]] ?? []
             DispatchQueue.main.async {
-//                self.users = [Users]()
-//                for userEntry in usersReceived {
-//                    self.users.append(Users(username: userEntry[0]!,
-//                                            location: userEntry[1]!))
-//                    print("getUsers successfully called.")
-//                }
+                self.models = [LibraryModel]()
                 
-                for userModel in userModelsServer {
-                    print(userModel[2])
-                    print(userModel[3])
-                    returnVal.append(LibraryModel(name: (userModel[2] as? String)!,
-                                                   scaleCompensation: 30/100,
-                                                   url: URL(fileURLWithPath: (userModel[3] as? String)!)))
+                for modelEntry in modelsReceived {
+                    print(modelEntry[2]!)
+                    print(modelEntry[3]!)
+                    let url = URL(string: (modelEntry[3])!)
+                    print("OUCH")
+                    print(url)
+                    //FileDownloader.loadFileAsync(url: url!) { (path, error) in
+                        //self.updateLibrary()
+                        //print("Downloaded")
+                    //}
+                    /*
+                    var temp = LibraryModel(name: (modelEntry[2])!,
+                                            scaleCompensation: 30/100,
+                                            url: URL(fileURLWithPath: (modelEntry[3])!))
+                    temp.genThumbnail()
+                    self.models.append(temp)
+                    print(self.models.count)*/
                 }
             }
-            group.leave()
         }.resume()
-        group.wait()
-        return returnVal
+        //sem.wait()
+    }
+}
+
+class FileDownloader {
+
+    static func loadFileSync(url: URL, completion: @escaping (String?, Error?) -> Void)
+    {
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        //let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+        var filePath = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
+        var fileUrl = URL(fileURLWithPath: filePath)
+        let destinationUrl = fileUrl
+        if FileManager().fileExists(atPath: destinationUrl.path)
+        {
+            print("File already exists [\(destinationUrl.path)]")
+            completion(destinationUrl.path, nil)
+        }
+        else if let dataFromURL = NSData(contentsOf: url)
+        {
+            if dataFromURL.write(to: destinationUrl, atomically: true)
+            {
+                print("file saved [\(destinationUrl.path)]")
+                completion(destinationUrl.path, nil)
+            }
+            else
+            {
+                print("error saving file")
+                let error = NSError(domain:"Error saving file", code:1001, userInfo:nil)
+                completion(destinationUrl.path, error)
+            }
+        }
+        else
+        {
+            let error = NSError(domain:"Error downloading file", code:1002, userInfo:nil)
+            completion(destinationUrl.path, error)
+        }
+    }
+
+    static func loadFileAsync(url: URL, completion: @escaping (String?, Error?) -> Void)
+    {
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+
+        let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+        print(url.lastPathComponent)
+        if FileManager().fileExists(atPath: destinationUrl.path)
+        {
+            print("File already exists [\(destinationUrl.path)]")
+            completion(destinationUrl.path, nil)
+        }
+        else
+        {
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
+            var request = URLRequest(url: url)
+            print("LOOK!!")
+            print(request)
+            request.httpMethod = "GET"
+            let task = session.dataTask(with: request, completionHandler:
+            {
+                data, response, error in
+                if error == nil
+                {
+                    if let response = response as? HTTPURLResponse
+                    {
+                        if response.statusCode == 200
+                        {
+                            if let data = data
+                            {
+                                if let _ = try? data.write(to: destinationUrl, options: Data.WritingOptions.atomic)
+                                {
+                                    completion(destinationUrl.path, error)
+                                }
+                                else
+                                {
+                                    completion(destinationUrl.path, error)
+                                }
+                            }
+                            else
+                            {
+                                completion(destinationUrl.path, error)
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    completion(destinationUrl.path, error)
+                }
+            })
+            task.resume()
+        }
     }
 }

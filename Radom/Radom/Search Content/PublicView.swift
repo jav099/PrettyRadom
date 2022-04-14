@@ -94,9 +94,10 @@ struct PublicModelView: View {
     
     // KL: need to modify according to user
     var searchResults: [LibraryModel] {
-        var userModels = modelFiles.getModels(username: username)
+        /*var userModels = modelFiles.getModels(username: username)
         userModels.append(contentsOf: modelFiles.all)
-        return userModels
+        return userModels*/
+        return modelFiles.all
     }
 }
 

@@ -27,10 +27,15 @@ struct MainView: View {
     @ObservedObject var modelFiles = LibraryModels()
     @EnvironmentObject var placementSettings: PlacementSettings
     
+    //@ObservedObject var modelStore = ModelStore.shared
+    
+    @ObservedObject var modelStore2 = LibraryModels.shared
+    
     @State var openFile = false
     @State var fileName = ""
     @State var files = [URL]()
     
+    //var userModels = [LibraryModel]()
     
     var body: some View {
         NavigationView{
@@ -59,7 +64,7 @@ struct MainView: View {
                 
                 LazyVGrid(columns: columns,
                           spacing: 30) {
-                    ForEach(searchResults, id: \.name) { model in
+                    ForEach(modelFiles.all, id: \.name) { model in
                         //let model = modelFiles.all[index]
                         
                         ItemButton(model: model) {
@@ -73,6 +78,9 @@ struct MainView: View {
                 .searchable(text: $searchText)
             }
             .padding()
+            .onAppear {
+                modelFiles.getModels(username)
+            }
         }
         .navigationBarHidden(true)
 
@@ -83,24 +91,10 @@ struct MainView: View {
 //        modelFiles.all.forEach {model in
 //            namelist.append(model.name)
 //        }
-        var userModels = modelFiles.getModels(username: username)
+        var userModels = modelFiles.models
+        userModels.append(contentsOf: modelFiles.all)
         
-        /*let seconds = 4.0
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            if searchText.isEmpty {
-                userModels.append(contentsOf: modelFiles.all)
-            } else {
-                userModels.append(contentsOf: modelFiles.all.filter({$0.name.contains(searchText)}))
-            }
-            print(userModels.count)
-        }*/
-        if searchText.isEmpty {
-            userModels.append(contentsOf: modelFiles.all)
-        } else {
-            userModels.append(contentsOf: modelFiles.all.filter({$0.name.contains(searchText)}))
-        }
-        print(userModels.count)
-        
+        //print(userModels.count)
         return userModels
     }
 }
