@@ -24,7 +24,7 @@ struct RealityKitView: View {
                 } else {
                 
                     HStack {
-                       LibraryButton()
+                       LibraryButton(username:$username, loggedIn:$loggedIn)
                        Spacer()
                        ExitButton(username: $username, loggedIn: $loggedIn)
                    }
@@ -96,6 +96,9 @@ struct ARViewContainer: UIViewRepresentable {
     }
 }
 struct LibraryButton: View {
+    @Binding var username: String
+    @Binding var loggedIn: Bool
+    
     @State private var isShowingDetailView = false
     
     var body: some View {
@@ -104,7 +107,7 @@ struct LibraryButton: View {
             HStack() {
                 Color.black.opacity(0.25)
                 
-                NavigationLink(destination: MainView(), isActive: $isShowingDetailView) {
+                NavigationLink(destination: MainView(username:$username, loggedIn:$loggedIn), isActive: $isShowingDetailView) {
                     Button(action: {
                         print("LibraryButton pressed")
                         self.isShowingDetailView = true

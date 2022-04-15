@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
+    @Binding var username: String
+    @Binding var loggedIn: Bool
+
     let colors: [Color] = [.red, .green, .blue, .yellow, .purple]
     //Searchbar
     @State private var searchText = ""
@@ -24,6 +27,7 @@ struct MainView: View {
      
     //let models = LibraryModels().get()
     @ObservedObject var modelFiles = LibraryModels()
+    @ObservedObject var importModel = ImportModelPost.shared
     @EnvironmentObject var placementSettings: PlacementSettings
     
     @State var openFile = false
@@ -44,6 +48,7 @@ struct MainView: View {
                 .fileImporter(isPresented: $openFile, allowedContentTypes: [.usdz]) { (res) in
                     do {
                         let fileUrl = try res.get()
+                        var fileToPost = try? Data(contentsOf: modelFiles.get().last!.url)
                         
                         print(fileUrl)
                         
@@ -51,6 +56,7 @@ struct MainView: View {
                         self.fileName = fileUrl.lastPathComponent
                         files.append(saveFile(url: fileUrl))
                         modelFiles.updateLibrary()
+                        importModel.postmodel(username: username, description: "place holder description", price: "place holder price", modelName: self.fileName, model: fileToPost!.base64EncodedString())
                     } catch {
                         print("error reading file")
                         print(error.localizedDescription)
@@ -91,11 +97,13 @@ struct MainView: View {
     }
 }
 
+/*
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
     }
 }
+ */
 
 func getDocumentsDirectory() -> URL {
     return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]

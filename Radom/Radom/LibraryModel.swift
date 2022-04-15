@@ -39,20 +39,12 @@ class LibraryModel {
     //TODO: Create a method to async load modelEntity
     func asyncLoadModelEntity() {
         let filename = self.name + ".usdz"
-        
-        self.cancellable = ModelEntity.loadModelAsync(named: filename)
-            .sink(receiveCompletion: {loadCompletion in
-                switch loadCompletion{
-                case .failure(let error): print("Unable to load modelEntity for \(filename). Error: \(error.localizedDescription)")
-                case .finished:
-                    break
-                }
-            }, receiveValue: {modelEntity in
-                self.modelEntity = modelEntity
-                self.modelEntity?.scale *= self.scaleCompensation
-                
-                print("modelEntity for \(self.name) has been loaded.")
-                })
+        do {
+            self.modelEntity = try ModelEntity.loadModel(contentsOf: self.url, withName: filename)
+        }
+        catch {
+            print("javier")
+        }
     }
 }
 
