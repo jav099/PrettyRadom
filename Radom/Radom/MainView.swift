@@ -91,11 +91,11 @@ struct MainView: View {
 //        modelFiles.all.forEach {model in
 //            namelist.append(model.name)
 //        }
-        var userModels = modelFiles.models
-        userModels.append(contentsOf: modelFiles.all)
+        //var userModels = modelFiles.models
+        //userModels.append(contentsOf: modelFiles.all)
         
         //print(userModels.count)
-        return userModels
+        return modelFiles.all
     }
 }
 /*

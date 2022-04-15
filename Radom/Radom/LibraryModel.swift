@@ -57,11 +57,21 @@ class LibraryModel {
 }
 
 func listAllFiles() -> [URL]{
-    let documentsUrl = getDocumentsDirectory()
+    var filePath = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
+    var fileUrl = URL(fileURLWithPath: filePath)
+    let documentsUrl = fileUrl.deletingLastPathComponent()
+    
+    /*print("DOCUMENTSURL")
+    print(documentsUrl)
+    var filePath = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
+    var fileUrl = URL(fileURLWithPath: filePath)
+    print("FILEURL")
+    print(fileUrl)*/
 
     do {
         let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil)
-        print(directoryContents)
+        //print("THIS IS DIR CONTENTS")
+        //print(directoryContents)
         return directoryContents
     } catch {
         print(error)
@@ -129,7 +139,7 @@ class LibraryModels: ObservableObject {
         defaultModelsCount = modelCount
         self.all += [chair_swan, flower_tulip, horse, flower_bed, tv_retro]
         
-        listAllFiles()
+        //listAllFiles()
     }
     
     func get() -> [LibraryModel] {
@@ -138,21 +148,29 @@ class LibraryModels: ObservableObject {
     
     func updateLibrary() {
         let docs = listAllFiles()
+        print("UPDATE LIBRARY")
         for url in docs {
             print(url)
-            if url.lastPathComponent != "Inbox"{
+            /*
+            if url.lastPathComponent.contains("usdz") {
+                print("UPDATING LIBRARY FOUND")
+                print(url)
                 let fullUrl = url.lastPathComponent
                 let fullArr = fullUrl.components(separatedBy: ".")
                 
-                let name = fullUrl
+                let name = fullArr[0]
+                print("THIS IS NAME")
+                print(name)
                 if !existingModels.contains(name) {
                     let model = LibraryModel(name: name, scaleCompensation: 0.32/100, url: url)
                     model.genThumbnail()
                     self.all.append(model)
+                    existingModels.insert(name)
                     print("Update library")
                     modelCount += 1
                 }
             }
+             */
         }
         print(self.all.count)
     }
@@ -160,6 +178,8 @@ class LibraryModels: ObservableObject {
 
     func getModels(_ username: String) {
         //let sem = DispatchSemaphore.init(value: 0)
+        //print("FIRST COUNT")
+        //print(self.all.count)
         guard let apiUrl = URL(string: serverUrl+"getmodels/?username="+username) else {
             print("getModel: Bad URL")
             return
@@ -190,71 +210,35 @@ class LibraryModels: ObservableObject {
                 self.models = [LibraryModel]()
                 
                 for modelEntry in modelsReceived {
-                    print(modelEntry[2]!)
-                    print(modelEntry[3]!)
-                    let url = URL(string: (modelEntry[3])!)
-                    print("OUCH")
-                    print(url)
-                    //FileDownloader.loadFileAsync(url: url!) { (path, error) in
-                        //self.updateLibrary()
-                        //print("Downloaded")
-                    //}
-                    /*
-                    var temp = LibraryModel(name: (modelEntry[2])!,
-                                            scaleCompensation: 30/100,
-                                            url: URL(fileURLWithPath: (modelEntry[3])!))
-                    temp.genThumbnail()
-                    self.models.append(temp)
-                    print(self.models.count)*/
+                    let found = Bundle.main.path(forResource: (modelEntry[2]!), ofType: "usdz")
+                    if found == nil {
+                        let url = URL(string: (modelEntry[3])!)
+                        FileDownloader.loadFileSync(url: url!) { (path, error) in
+                            //print("added "+(modelEntry[2]!))
+                            self.updateLibrary()
+                        }
+                    }
                 }
             }
         }.resume()
-        //sem.wait()
+        //print("SECOND COUNT")
+        //print(self.all.count)
+        //listAllFiles()
     }
 }
 
 class FileDownloader {
-
-    static func loadFileSync(url: URL, completion: @escaping (String?, Error?) -> Void)
-    {
-        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        
-        //let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
-        var filePath = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
-        var fileUrl = URL(fileURLWithPath: filePath)
-        let destinationUrl = fileUrl
-        if FileManager().fileExists(atPath: destinationUrl.path)
-        {
-            print("File already exists [\(destinationUrl.path)]")
-            completion(destinationUrl.path, nil)
-        }
-        else if let dataFromURL = NSData(contentsOf: url)
-        {
-            if dataFromURL.write(to: destinationUrl, atomically: true)
-            {
-                print("file saved [\(destinationUrl.path)]")
-                completion(destinationUrl.path, nil)
-            }
-            else
-            {
-                print("error saving file")
-                let error = NSError(domain:"Error saving file", code:1001, userInfo:nil)
-                completion(destinationUrl.path, error)
-            }
-        }
-        else
-        {
-            let error = NSError(domain:"Error downloading file", code:1002, userInfo:nil)
-            completion(destinationUrl.path, error)
-        }
-    }
-
     static func loadFileAsync(url: URL, completion: @escaping (String?, Error?) -> Void)
     {
-        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-
+        //let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let docFolder = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
+        var documentsUrl = URL(fileURLWithPath: docFolder)
+        documentsUrl = documentsUrl.deletingLastPathComponent()
         let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
-        print(url.lastPathComponent)
+        //print(docFolder)
+        print(destinationUrl)
+        //print("lFA")
+        //print(url.lastPathComponent)
         if FileManager().fileExists(atPath: destinationUrl.path)
         {
             print("File already exists [\(destinationUrl.path)]")
@@ -264,8 +248,8 @@ class FileDownloader {
         {
             let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
             var request = URLRequest(url: url)
-            print("LOOK!!")
-            print(request)
+            //print("LOOK!!")
+            //print(request)
             request.httpMethod = "GET"
             let task = session.dataTask(with: request, completionHandler:
             {
@@ -300,6 +284,43 @@ class FileDownloader {
                 }
             })
             task.resume()
+        }
+    }
+    
+    static func loadFileSync(url: URL, completion: @escaping (String?, Error?) -> Void)
+    {
+        let docFolder = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
+        var documentsUrl = URL(fileURLWithPath: docFolder)
+        documentsUrl = documentsUrl.deletingLastPathComponent()
+        let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+        //print(docFolder)
+        print(destinationUrl)
+        //print("lFA")
+        //print(url.lastPathComponent)
+        
+        if FileManager().fileExists(atPath: destinationUrl.path)
+        {
+            print("File already exists [\(destinationUrl.path)]")
+            completion(destinationUrl.path, nil)
+        }
+        else if let dataFromURL = NSData(contentsOf: url)
+        {
+            if dataFromURL.write(to: destinationUrl, atomically: true)
+            {
+                print("file saved [\(destinationUrl.path)]")
+                completion(destinationUrl.path, nil)
+            }
+            else
+            {
+                print("error saving file")
+                let error = NSError(domain:"Error saving file", code:1001, userInfo:nil)
+                completion(destinationUrl.path, error)
+            }
+        }
+        else
+        {
+            let error = NSError(domain:"Error downloading file", code:1002, userInfo:nil)
+            completion(destinationUrl.path, error)
         }
     }
 }
