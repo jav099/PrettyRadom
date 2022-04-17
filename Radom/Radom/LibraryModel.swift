@@ -151,7 +151,6 @@ class LibraryModels: ObservableObject {
         print("UPDATE LIBRARY")
         for url in docs {
             print(url)
-            /*
             if url.lastPathComponent.contains("usdz") {
                 print("UPDATING LIBRARY FOUND")
                 print(url)
@@ -170,7 +169,6 @@ class LibraryModels: ObservableObject {
                     modelCount += 1
                 }
             }
-             */
         }
         print(self.all.count)
     }
@@ -313,6 +311,7 @@ class FileDownloader {
             else
             {
                 print("error saving file")
+                print(dataFromURL)
                 let error = NSError(domain:"Error saving file", code:1001, userInfo:nil)
                 completion(destinationUrl.path, error)
             }

@@ -79,7 +79,7 @@ struct MainView: View {
             }
             .padding()
             .onAppear {
-                modelFiles.getModels(username)
+                modelFiles.updateLibrary()
             }
         }
         .navigationBarHidden(true)
