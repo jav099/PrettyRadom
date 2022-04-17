@@ -113,17 +113,23 @@ struct PublicItemButton: View {
     let model: [String?]
     let user: String
     let action: () -> Void
+    @Environment(\.openURL) var openURL
     
     var body: some View {
         Button(action:{
             self.action()
-            print("Button hit for "+model[0]!)
-            //https://35.238.172.242/media/teapotIKEA.usdz
-            
-            let url = URL(string: (model[3])!)
-            saveFile(url: url!)
-            print("Saved "+(model[2]!)+"from "+user)
-                //self.updateLibrary()
+            openURL(URL(string: (model[3])!)!)
+//            print("Button hit for "+model[0]!)
+//            //https://35.238.172.242/media/teapotIKEA.usdz
+//
+//            let url = URL(string: (model[3])!)
+//            print(model[3]!)
+////            saveFile(url: url!)
+//            FileDownloader.loadFileSync(url: url!) { (path, error) in
+//                print("PDF File downloaded to : \(path!)")
+//            }
+//            print("Saved "+(model[2]!)+" from "+user)
+//                //self.updateLibrary()
         }) {
             //let defaultThumbnail = UIImage(systemName: "questionmark")
             //Image(uiImage: self.model.thumbnailGenerator.thumbnailImage!)
