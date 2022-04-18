@@ -48,7 +48,6 @@ struct MainView: View {
                 .fileImporter(isPresented: $openFile, allowedContentTypes: [.usdz]) { (res) in
                     do {
                         let fileUrl = try res.get()
-                        var fileToPost = try? Data(contentsOf: modelFiles.get().last!.url)
                         
                         print(fileUrl)
                         
@@ -56,7 +55,8 @@ struct MainView: View {
                         self.fileName = fileUrl.lastPathComponent
                         files.append(saveFile(url: fileUrl))
                         modelFiles.updateLibrary()
-                        importModel.postmodel(username: username, description: "place holder description", price: "place holder price", modelName: self.fileName, model: fileToPost!.base64EncodedString())
+                        let fileToPostPath = modelFiles.get().last!.url
+                        importModel.postModel(username: username, description: "place holder description", price: "place holder price", modelName: self.fileName, modelURL: fileToPostPath)
                     } catch {
                         print("error reading file")
                         print(error.localizedDescription)

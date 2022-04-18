@@ -18,6 +18,8 @@ struct PublicView: View {
     
     func loadData() {
         store.getProfile(user.username!)
+        store.getUserModels(user.username!)
+        //print("LOADED USER MODELS")
         self.isPublic = store.profile.isPublic
         self.location = store.profile.location
 //        if user.publicity == "false" {
@@ -52,7 +54,9 @@ struct PublicView: View {
                     }
                     .padding()
                 }
-                .onAppear(perform: loadData)
+                .onAppear {
+                    loadData()
+                }
             }
             else{
                 HStack{
@@ -65,8 +69,9 @@ struct PublicView: View {
 }
 
 struct PublicModelView: View {
+    //Is this the users username? There is not @State or @Binding
     var username: String
-    @ObservedObject var store = ModelStore.shared
+    @ObservedObject var store = ProfileStore.shared
     let columns = [GridItem(.fixed(150)),
                    GridItem(.fixed(150))]
      
@@ -77,13 +82,14 @@ struct PublicModelView: View {
     var body: some View {
         LazyVGrid(columns: columns,
                   spacing: 30) {
-            ForEach(searchResults, id: \.name) { model in
+            ForEach(searchResults, id: \.self) { model in
                 //let model = modelFiles.all[index]
                 
-                PublicItemButton(model: model) {
-                    model.asyncLoadModelEntity()
-                    self.placementSettings.selectedModel = model
-                    print("BrowseView: select \(model.name) for placement")
+                PublicItemButton(model: model, user: username) {
+                    //model.asyncLoadModelEntity()
+                    //self.placementSettings.selectedModel = model
+                    print("BrowseView: select"+model[0]!+" for placement")
+                    //Need to add model to user
                 }
                 // get search information
             }
@@ -91,34 +97,52 @@ struct PublicModelView: View {
     }
     
     // KL: need to modify according to user
-    var searchResults: [LibraryModel] {
-        return modelFiles.all
+    var searchResults: [[String?]] {
+        /*var userModels = modelFiles.getModels(username: username)
+        userModels.append(contentsOf: modelFiles.all)
+        return userModels*/
+        //print("CHECKING STORE MODELS")
+        store.getUserModels(username)
+        //print(store.models.count)
+        return store.returnModels()
     }
 }
 
 
 struct PublicItemButton: View {
-    let model: LibraryModel
+    let model: [String?]
+    let user: String
     let action: () -> Void
+    @Environment(\.openURL) var openURL
     
     var body: some View {
         Button(action:{
             self.action()
+            openURL(URL(string: (model[3])!)!)
+//            print("Button hit for "+model[0]!)
+//            //https://35.238.172.242/media/teapotIKEA.usdz
+//
+//            let url = URL(string: (model[3])!)
+//            print(model[3]!)
+////            saveFile(url: url!)
+//            FileDownloader.loadFileSync(url: url!) { (path, error) in
+//                print("PDF File downloaded to : \(path!)")
+//            }
+//            print("Saved "+(model[2]!)+" from "+user)
+//                //self.updateLibrary()
         }) {
             //let defaultThumbnail = UIImage(systemName: "questionmark")
             //Image(uiImage: self.model.thumbnailGenerator.thumbnailImage!)
             VStack {
-                Image(uiImage: model.thumbnail!)
-                    .resizable()
-                    .frame(height:150)
-                    .aspectRatio(1/1, contentMode: .fit)
-                    .background(Color(UIColor.secondarySystemFill))
-                    .cornerRadius(8.0)
-                Text(model.name)
-                    .foregroundColor(.black)
+                Text(model[0]!)
+                    .padding()
+                    .foregroundColor(.white)
+                    .font(.title)
+                Text(model[1]!)
+                    .padding()
+                    .foregroundColor(.white)
                     .font(.body)
             }
-        
         }
     }
 }
