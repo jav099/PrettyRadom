@@ -57,9 +57,11 @@ class LibraryModel {
 }
 
 func listAllFiles() -> [URL]{
-    var filePath = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
-    var fileUrl = URL(fileURLWithPath: filePath)
-    let documentsUrl = fileUrl.deletingLastPathComponent()
+    //var filePath = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
+    //var fileUrl = URL(fileURLWithPath: filePath)
+    //let documentsUrl = fileUrl.deletingLastPathComponent()
+    
+    let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     
     /*print("DOCUMENTSURL")
     print(documentsUrl)
@@ -208,13 +210,10 @@ class LibraryModels: ObservableObject {
                 self.models = [LibraryModel]()
                 
                 for modelEntry in modelsReceived {
-                    let found = Bundle.main.path(forResource: (modelEntry[2]!), ofType: "usdz")
-                    if found == nil {
-                        let url = URL(string: (modelEntry[3])!)
-                        FileDownloader.loadFileSync(url: url!) { (path, error) in
-                            //print("added "+(modelEntry[2]!))
-                            self.updateLibrary()
-                        }
+                    let url = URL(string: (modelEntry[3])!)
+                    FileDownloader.loadFileSync(url: url!) { (path, error) in
+                        //print("added "+(modelEntry[2]!))
+                        self.updateLibrary()
                     }
                 }
             }
@@ -229,9 +228,10 @@ class FileDownloader {
     static func loadFileAsync(url: URL, completion: @escaping (String?, Error?) -> Void)
     {
         //let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let docFolder = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
-        var documentsUrl = URL(fileURLWithPath: docFolder)
-        documentsUrl = documentsUrl.deletingLastPathComponent()
+        //let docFolder = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
+        //var documentsUrl = URL(fileURLWithPath: docFolder)
+        //documentsUrl = documentsUrl.deletingLastPathComponent()
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
         //print(docFolder)
         print(destinationUrl)
@@ -260,12 +260,15 @@ class FileDownloader {
                         {
                             if let data = data
                             {
+                                print(data)
                                 if let _ = try? data.write(to: destinationUrl, options: Data.WritingOptions.atomic)
                                 {
+                                    print("One")
                                     completion(destinationUrl.path, error)
                                 }
                                 else
                                 {
+                                    print("Two")
                                     completion(destinationUrl.path, error)
                                 }
                             }
@@ -287,14 +290,16 @@ class FileDownloader {
     
     static func loadFileSync(url: URL, completion: @escaping (String?, Error?) -> Void)
     {
-        let docFolder = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
-        var documentsUrl = URL(fileURLWithPath: docFolder)
-        documentsUrl = documentsUrl.deletingLastPathComponent()
-        let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+        //let docFolder = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
+        //var documentsUrl = URL(fileURLWithPath: docFolder)
+        //documentsUrl = documentsUrl.deletingLastPathComponent()
+        //let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
         //print(docFolder)
-        print(destinationUrl)
+        //print(destinationUrl)
         //print("lFA")
         //print(url.lastPathComponent)
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
         
         if FileManager().fileExists(atPath: destinationUrl.path)
         {

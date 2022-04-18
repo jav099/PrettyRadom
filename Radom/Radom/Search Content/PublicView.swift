@@ -121,7 +121,9 @@ struct PublicItemButton: View {
             //https://35.238.172.242/media/teapotIKEA.usdz
             
             let url = URL(string: (model[3])!)
-            saveFile(url: url!)
+            FileDownloader.loadFileAsync(url: url!) { (path, error) in
+                print("added "+(model[2]!))
+            }
             print("Saved "+(model[2]!)+"from "+user)
                 //self.updateLibrary()
         }) {

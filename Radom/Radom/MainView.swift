@@ -79,6 +79,8 @@ struct MainView: View {
             }
             .padding()
             .onAppear {
+                print("OnAppear UpdateLibrary")
+                modelFiles.getModels(username)
                 modelFiles.updateLibrary()
             }
         }
