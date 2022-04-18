@@ -72,8 +72,8 @@ func listAllFiles() -> [URL]{
 
     do {
         let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil)
-        //print("THIS IS DIR CONTENTS")
-        //print(directoryContents)
+        print("THIS IS DIR CONTENTS")
+        print(directoryContents)
         return directoryContents
     } catch {
         print(error)
@@ -233,8 +233,10 @@ class FileDownloader {
         //documentsUrl = documentsUrl.deletingLastPathComponent()
         let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
-        //print(docFolder)
-        print(destinationUrl)
+//        print("doc folder ")
+//        print(docFolder)
+//        print("Destination URL Path")
+//        print(destinationUrl)
         //print("lFA")
         //print(url.lastPathComponent)
         if FileManager().fileExists(atPath: destinationUrl.path)
@@ -263,17 +265,18 @@ class FileDownloader {
                                 print(data)
                                 if let _ = try? data.write(to: destinationUrl, options: Data.WritingOptions.atomic)
                                 {
-                                    print("One")
+                                    print("Write succeeded")
                                     completion(destinationUrl.path, error)
                                 }
                                 else
                                 {
-                                    print("Two")
+                                    print("Write failed")
                                     completion(destinationUrl.path, error)
                                 }
                             }
                             else
                             {
+                                print("Response code is not 200")
                                 completion(destinationUrl.path, error)
                             }
                         }

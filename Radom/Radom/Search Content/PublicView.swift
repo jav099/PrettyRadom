@@ -113,10 +113,10 @@ struct PublicItemButton: View {
     let model: [String?]
     let user: String
     let action: () -> Void
+    @Environment(\.openURL) var openURL
     
     var body: some View {
         Button(action:{
-            self.action()
             print("Button hit for "+model[0]!)
             //https://35.238.172.242/media/teapotIKEA.usdz
             
