@@ -39,6 +39,7 @@
 		F565EB852803727700E93531 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F565EB842803727700E93531 /* LoginView.swift */; };
 		F565EB872803728100E93531 /* loginPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F565EB862803728100E93531 /* loginPost.swift */; };
 		F565EB8928037F8600E93531 /* SignUpPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F565EB8828037F8600E93531 /* SignUpPost.swift */; };
+		F59EE4732809EBA60053DD42 /* ImportModelPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59EE4722809EBA60053DD42 /* ImportModelPost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		F565EB842803727700E93531 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F565EB862803728100E93531 /* loginPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginPost.swift; sourceTree = "<group>"; };
 		F565EB8828037F8600E93531 /* SignUpPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPost.swift; sourceTree = "<group>"; };
+		F59EE4722809EBA60053DD42 /* ImportModelPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportModelPost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				7701CA8827DD1F3200E1C9F1 /* TabMenuView.swift */,
 				F53EEACE2800C59300181967 /* FirstView.swift */,
 				F53EEAD02800C5B800181967 /* SignUpView.swift */,
+				F59EE4722809EBA60053DD42 /* ImportModelPost.swift */,
 				F565EB842803727700E93531 /* LoginView.swift */,
 				F565EB862803728100E93531 /* loginPost.swift */,
 				F565EB8828037F8600E93531 /* SignUpPost.swift */,
@@ -329,6 +332,7 @@
 				7701CA8B27DD211E00E1C9F1 /* RealityKitView.swift in Sources */,
 				F565EB872803728100E93531 /* loginPost.swift in Sources */,
 				19AF737328049A1100FA26EB /* SearchView.swift in Sources */,
+				F59EE4732809EBA60053DD42 /* ImportModelPost.swift in Sources */,
 				F53EEAD12800C5B800181967 /* SignUpView.swift in Sources */,
 				34F141D127E2B48200086619 /* CustomARView.swift in Sources */,
 				F565EB8928037F8600E93531 /* SignUpPost.swift in Sources */,

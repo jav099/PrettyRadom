@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MainView: View {
     @Binding var username: String
+    @Binding var loggedIn: Bool
+
     let colors: [Color] = [.red, .green, .blue, .yellow, .purple]
     //Searchbar
     @State private var searchText = ""
@@ -25,6 +27,7 @@ struct MainView: View {
      
     //let models = LibraryModels().get()
     @ObservedObject var modelFiles = LibraryModels()
+    @ObservedObject var importModel = ImportModelPost.shared
     @EnvironmentObject var placementSettings: PlacementSettings
     
     //@ObservedObject var modelStore = ModelStore.shared
@@ -54,6 +57,8 @@ struct MainView: View {
                         self.fileName = fileUrl.lastPathComponent
                         files.append(saveFile(url: fileUrl))
                         modelFiles.updateLibrary()
+                        let fileToPostPath = modelFiles.get().last!.url
+                        importModel.postModel(username: username, description: "place holder description", price: "place holder price", modelName: self.fileName, modelURL: fileToPostPath)
                     } catch {
                         print("error reading file")
                         print(error.localizedDescription)
