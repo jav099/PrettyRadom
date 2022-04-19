@@ -50,7 +50,7 @@ final class ProfileStore: ObservableObject {
     var models = [[String?]]()
 
     private let serverUrl = "https://35.238.172.242/"
-    var models = [[String?]]()
+    
 
     func getProfile(_ username: String) {
         let sem = DispatchSemaphore.init(value: 0)

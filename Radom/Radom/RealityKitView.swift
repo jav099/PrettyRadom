@@ -100,7 +100,7 @@ struct LibraryButton: View {
     @Binding var loggedIn: Bool
     
     @State private var isShowingDetailView = false
-    @State var username: String
+    //@State var username: String
     var body: some View {
         ZStack {
             
