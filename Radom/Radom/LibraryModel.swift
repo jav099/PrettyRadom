@@ -49,10 +49,22 @@ class LibraryModel {
 }
 
 func listAllFiles() -> [URL]{
-    let documentsUrl = getDocumentsDirectory()
+    //var filePath = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
+    //var fileUrl = URL(fileURLWithPath: filePath)
+    //let documentsUrl = fileUrl.deletingLastPathComponent()
+    
+    let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    
+    /*print("DOCUMENTSURL")
+    print(documentsUrl)
+    var filePath = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
+    var fileUrl = URL(fileURLWithPath: filePath)
+    print("FILEURL")
+    print(fileUrl)*/
 
     do {
         let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil)
+        print("THIS IS DIR CONTENTS")
         print(directoryContents)
         return directoryContents
     } catch {
@@ -65,14 +77,16 @@ func listAllFiles() -> [URL]{
 
 
 class LibraryModels: ObservableObject {
+    static let shared = LibraryModels()
     @Published var all: [LibraryModel] = []
+    @Published var models = [LibraryModel]()
     var existingModels: Set = ["Inbox"]
     var modelCount = 0
-
+    var defaultModelsCount: Int
     
     init() {
         
-        updateLibrary()
+        //updateLibrary()
         
         // TODO: will have to populate with models from back end
         
@@ -105,14 +119,35 @@ class LibraryModels: ObservableObject {
         modelCount += 1
         
         filePath = Bundle.main.path(forResource: "tv_retro", ofType: "usdz")!
+        //print(filePath)
+        //print("SPACE")
         fileUrl = URL(fileURLWithPath: filePath)
+        //print(fileUrl)
+        //print("S")
+        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0])
         let tv_retro = LibraryModel(name: "tv_retro", scaleCompensation: 30/100, url: fileUrl)
         existingModels.insert("tv_retro")
         tv_retro.genThumbnail()
         modelCount += 1
         
+        defaultModelsCount = modelCount
         self.all += [chair_swan, flower_tulip, horse, flower_bed, tv_retro]
         
+        
+        //Clearing out old models
+        let filemanager = FileManager.default
+        for filePath in listAllFiles() {
+            if filePath.absoluteString.contains("usdz") {
+                do {
+                    try filemanager.removeItem(at: filePath)
+                }
+                catch {
+                    print("error deleting")
+                }
+            }
+        }
+        updateLibrary()
+        //listAllFiles()
     }
     
     func get() -> [LibraryModel] {
@@ -121,20 +156,187 @@ class LibraryModels: ObservableObject {
     
     func updateLibrary() {
         let docs = listAllFiles()
+        print("UPDATE LIBRARY")
         for url in docs {
-            if url.lastPathComponent != "Inbox"{
+            print(url)
+            if url.lastPathComponent.contains("usdz") {
+                print("UPDATING LIBRARY FOUND")
+                print(url)
                 let fullUrl = url.lastPathComponent
                 let fullArr = fullUrl.components(separatedBy: ".")
                 
                 let name = fullArr[0]
+                print("THIS IS NAME")
+                print(name)
                 if !existingModels.contains(name) {
                     let model = LibraryModel(name: name, scaleCompensation: 0.32/100, url: url)
                     model.genThumbnail()
                     self.all.append(model)
-                    print(self.all)
+                    existingModels.insert(name)
+                    print("Update library")
                     modelCount += 1
                 }
             }
+        }
+        print(self.all.count)
+    }
+    private let serverUrl = "https://35.238.172.242/"
+
+    func getModels(_ username: String) {
+        //let sem = DispatchSemaphore.init(value: 0)
+        //print("FIRST COUNT")
+        //print(self.all.count)
+        guard let apiUrl = URL(string: serverUrl+"getmodels/?username="+username) else {
+            print("getModel: Bad URL")
+            return
+        }
+        
+        var request = URLRequest(url: apiUrl)
+        request.httpMethod = "GET"
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            //defer { sem.signal() }
+            
+            guard let data = data, error == nil else {
+                print("getModel: NETWORKING ERROR")
+                return
+            }
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                print("getModel: HTTP STATUS: \(httpStatus.statusCode)")
+                return
+            }
+            
+            guard let jsonObj = try? JSONSerialization.jsonObject(with: data) as? [String:Any] else {
+                print("getModel: failed JSON deserialization")
+                return
+            }
+            let modelsReceived = jsonObj["models"] as? [[String?]] ?? []
+            DispatchQueue.main.async {
+                for modelEntry in modelsReceived {
+                    var isFound = false
+                    for defaultModel in self.all {
+                        if defaultModel.name == modelEntry[2]! {
+                            isFound = true
+                        }
+                    }
+                    if !isFound {
+                        let url = URL(string: (modelEntry[3])!)
+                        FileDownloader.loadFileSync(url: url!) { (path, error) in
+                            //print("added "+(modelEntry[2]!))
+                            self.updateLibrary()
+                        }
+                    }
+                }
+            }
+        }.resume()
+    }
+}
+
+class FileDownloader {
+    static func loadFileAsync(url: URL, completion: @escaping (String?, Error?) -> Void)
+    {
+        //let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        //let docFolder = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
+        //var documentsUrl = URL(fileURLWithPath: docFolder)
+        //documentsUrl = documentsUrl.deletingLastPathComponent()
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+//        print("doc folder ")
+//        print(docFolder)
+//        print("Destination URL Path")
+//        print(destinationUrl)
+        //print("lFA")
+        //print(url.lastPathComponent)
+        if FileManager().fileExists(atPath: destinationUrl.path)
+        {
+            print("File already exists [\(destinationUrl.path)]")
+            completion(destinationUrl.path, nil)
+        }
+        else
+        {
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
+            var request = URLRequest(url: url)
+            //print("LOOK!!")
+            //print(request)
+            request.httpMethod = "GET"
+            let task = session.dataTask(with: request, completionHandler:
+            {
+                data, response, error in
+                if error == nil
+                {
+                    if let response = response as? HTTPURLResponse
+                    {
+                        if response.statusCode == 200
+                        {
+                            if let data = data
+                            {
+                                print(data)
+                                if let _ = try? data.write(to: destinationUrl, options: Data.WritingOptions.atomic)
+                                {
+                                    print("Write succeeded")
+                                    completion(destinationUrl.path, error)
+                                }
+                                else
+                                {
+                                    print("Write failed")
+                                    completion(destinationUrl.path, error)
+                                }
+                            }
+                            else
+                            {
+                                print("Response code is not 200")
+                                completion(destinationUrl.path, error)
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    completion(destinationUrl.path, error)
+                }
+            })
+            task.resume()
+        }
+    }
+    
+    static func loadFileSync(url: URL, completion: @escaping (String?, Error?) -> Void)
+    {
+        //let docFolder = Bundle.main.path(forResource: "chair_swan", ofType: "usdz")!
+        //var documentsUrl = URL(fileURLWithPath: docFolder)
+        //documentsUrl = documentsUrl.deletingLastPathComponent()
+        //let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+        //print(docFolder)
+        //print(destinationUrl)
+        //print("lFA")
+        //print(url.lastPathComponent)
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+        
+        if FileManager().fileExists(atPath: destinationUrl.path)
+        {
+            print("File already exists [\(destinationUrl.path)]")
+            completion(destinationUrl.path, nil)
+        }
+        else if let dataFromURL = NSData(contentsOf: url)
+        {
+            if dataFromURL.write(to: destinationUrl, atomically: true)
+            {
+                print("file saved [\(destinationUrl.path)]")
+                completion(destinationUrl.path, nil)
+            }
+            else
+            {
+                print("error saving file")
+                print(dataFromURL)
+                let error = NSError(domain:"Error saving file", code:1001, userInfo:nil)
+                completion(destinationUrl.path, error)
+            }
+        }
+        else
+        {
+            let error = NSError(domain:"Error downloading file", code:1002, userInfo:nil)
+            completion(destinationUrl.path, error)
         }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct PublicView: View {
     @State var user : Users
+    @State var profileName: String
     @ObservedObject var store = ProfileStore.shared
     //FIXME: user's publicity
     @State private var isPublic = false
@@ -50,7 +51,7 @@ struct PublicView: View {
                             .font(.system(size: 20)).lineLimit(2)
                     }
                     HStack {
-                        PublicModelView(username: user.username!)
+                        PublicModelView(username: user.username!, profileName: profileName)
                     }
                     .padding()
                 }
@@ -71,6 +72,7 @@ struct PublicView: View {
 struct PublicModelView: View {
     //Is this the users username? There is not @State or @Binding
     var username: String
+    var profileName: String
     @ObservedObject var store = ProfileStore.shared
     let columns = [GridItem(.fixed(150)),
                    GridItem(.fixed(150))]
@@ -85,7 +87,7 @@ struct PublicModelView: View {
             ForEach(searchResults, id: \.self) { model in
                 //let model = modelFiles.all[index]
                 
-                PublicItemButton(model: model, user: username) {
+                PublicItemButton(model: model, user: username, profileName: profileName) {
                     //model.asyncLoadModelEntity()
                     //self.placementSettings.selectedModel = model
                     print("BrowseView: select"+model[0]!+" for placement")
@@ -112,27 +114,23 @@ struct PublicModelView: View {
 struct PublicItemButton: View {
     let model: [String?]
     let user: String
+    var profileName: String
     let action: () -> Void
     @Environment(\.openURL) var openURL
+    @ObservedObject var store = ProfileStore.shared
     
     var body: some View {
         Button(action:{
-            self.action()
-            openURL(URL(string: (model[3])!)!)
-//            print("Button hit for "+model[0]!)
-//            //https://35.238.172.242/media/teapotIKEA.usdz
-//
-//            let url = URL(string: (model[3])!)
-//            print(model[3]!)
-////            saveFile(url: url!)
-//            FileDownloader.loadFileSync(url: url!) { (path, error) in
-//                print("PDF File downloaded to : \(path!)")
-//            }
-//            print("Saved "+(model[2]!)+" from "+user)
-//                //self.updateLibrary()
+            print("Button hit for "+model[0]!)
+            
+            let url = URL(string: (model[3])!)
+            FileDownloader.loadFileAsync(url: url!) { (path, error) in
+                print("added "+(model[2]!))
+            }
+            store.postModelFromSearch(username: profileName, description: model[0]!, price: model[1]!, modelname: model[2]!, fileString: model[3]!)
+            print("Saved "+(model[2]!)+"from "+user)
+            
         }) {
-            //let defaultThumbnail = UIImage(systemName: "questionmark")
-            //Image(uiImage: self.model.thumbnailGenerator.thumbnailImage!)
             VStack {
                 Text(model[0]!)
                     .padding()

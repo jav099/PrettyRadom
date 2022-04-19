@@ -47,6 +47,7 @@ final class ProfileStore: ObservableObject {
                                      // instances can be created
     
     var profile = Profile(username: "", location: "", isPublic: false)
+    var models = [[String?]]()
 
     private let serverUrl = "https://35.238.172.242/"
     var models = [[String?]]()
@@ -167,5 +168,73 @@ final class ProfileStore: ObservableObject {
         }.resume()
         
         sem.wait()
+    }
+    
+    func postModelFromSearch(username: String, description: String, price: String, modelname: String, fileString: String) {
+        print(username)
+        let semaphore = DispatchSemaphore (value: 0)
+        let boundary = UUID().uuidString
+        
+        let parameters: [String: String] = [
+                    "username": username,
+                    "description": description,
+                    "price": price,
+                    "modelName": modelname,
+                    "fileurl": fileString
+                ]
+        
+        let url = URL(string: serverUrl + "postmodelfromsearch/")
+        var urlRequest = URLRequest(url: url!)
+        urlRequest.httpMethod = "POST"
+        
+        // Set Content-Type Header to multipart/form-data, this is equivalent to submitting form data with file upload in a web browser
+        // And the boundary is also set here
+        urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        //let modeldata = try? Data(contentsOf: modelURL)
+        let lineBreak = "\r\n"
+        var data = Data()
+        
+        for (key, value) in parameters {
+            data.append("--\(boundary + lineBreak)".data(using: .utf8)!)
+            data.append("Content-Disposition: form-data; name=\"\(key)\"\(lineBreak + lineBreak)".data(using: .utf8)!)
+            data.append("\(value + lineBreak)".data(using: .utf8)!)
+        }
+        
+        data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        
+        urlRequest.httpBody = data
+        let session = URLSession.shared
+        session.dataTask(with: urlRequest) { (data, response, error) in
+            defer { semaphore.signal() }
+            
+            guard let _ = data, error == nil else {
+                print("postmodelfromsearch: NETWORKING ERROR")
+                return
+            }
+            if let httpStatus = response as? HTTPURLResponse {
+                if httpStatus.statusCode != 200 {
+                    //print(modelName)
+                    print("postmodelfromsearch: HTTP STATUS: \(httpStatus.statusCode)")
+                    return
+                } else {
+                    print("postmodelfromsearch: success")
+                }
+            }
+            if let response = response {
+                print(response)
+            }
+            
+            if let data = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                } catch {
+                    print(error)
+                }
+            }
+            }.resume()
+        
+        semaphore.wait()
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchView: View {
-    
+    @Binding var username: String
     @ObservedObject var store = UserStore.shared
     //Searchbar
     @State private var searchText = ""
@@ -18,7 +18,7 @@ struct SearchView: View {
         NavigationView {
             List{
                 ForEach(searchResults, id: \.self){ usera in
-                    ListUserRow(users:usera)
+                    ListUserRow(users:usera, profileName: username)
                 }
             }
             .searchable(text: $searchText, prompt:"Search for user ...")

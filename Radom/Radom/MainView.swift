@@ -30,11 +30,13 @@ struct MainView: View {
     @ObservedObject var importModel = ImportModelPost.shared
     @EnvironmentObject var placementSettings: PlacementSettings
     
+    //@ObservedObject var modelStore = ModelStore.shared
+    
     @State var openFile = false
     @State var fileName = ""
     @State var files = [URL]()
     
-
+    //var userModels = [LibraryModel]()
     
     var body: some View {
         NavigationView{
@@ -65,7 +67,7 @@ struct MainView: View {
                 
                 LazyVGrid(columns: columns,
                           spacing: 30) {
-                    ForEach(searchResults, id: \.name) { model in
+                    ForEach(modelFiles.all, id: \.name) { model in
                         //let model = modelFiles.all[index]
                         
                         ItemButton(model: model) {
@@ -79,6 +81,11 @@ struct MainView: View {
                 .searchable(text: $searchText)
             }
             .padding()
+            .onAppear {
+                //print("OnAppear UpdateLibrary")
+                modelFiles.getModels(username)
+                modelFiles.updateLibrary()
+            }
         }
         .navigationBarHidden(true)
 
@@ -89,22 +96,20 @@ struct MainView: View {
 //        modelFiles.all.forEach {model in
 //            namelist.append(model.name)
 //        }
-        if searchText.isEmpty {
-            return modelFiles.all
-        } else {
-            return modelFiles.all.filter({$0.name.contains(searchText)})
-        }
+        //var userModels = modelFiles.models
+        //userModels.append(contentsOf: modelFiles.all)
+        
+        //print(userModels.count)
+        return modelFiles.all
     }
 }
-
 /*
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(username: $username)
     }
 }
  */
-
 func getDocumentsDirectory() -> URL {
     return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 }
