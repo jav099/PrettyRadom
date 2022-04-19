@@ -29,8 +29,6 @@ struct MainView: View {
     
     //@ObservedObject var modelStore = ModelStore.shared
     
-    @ObservedObject var modelStore2 = LibraryModels.shared
-    
     @State var openFile = false
     @State var fileName = ""
     @State var files = [URL]()
@@ -79,7 +77,7 @@ struct MainView: View {
             }
             .padding()
             .onAppear {
-                print("OnAppear UpdateLibrary")
+                //print("OnAppear UpdateLibrary")
                 modelFiles.getModels(username)
                 modelFiles.updateLibrary()
             }

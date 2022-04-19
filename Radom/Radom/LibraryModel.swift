@@ -141,6 +141,20 @@ class LibraryModels: ObservableObject {
         defaultModelsCount = modelCount
         self.all += [chair_swan, flower_tulip, horse, flower_bed, tv_retro]
         
+        
+        //Clearing out old models
+        let filemanager = FileManager.default
+        for filePath in listAllFiles() {
+            if filePath.absoluteString.contains("usdz") {
+                do {
+                    try filemanager.removeItem(at: filePath)
+                }
+                catch {
+                    print("error deleting")
+                }
+            }
+        }
+        updateLibrary()
         //listAllFiles()
     }
     
@@ -207,20 +221,23 @@ class LibraryModels: ObservableObject {
             }
             let modelsReceived = jsonObj["models"] as? [[String?]] ?? []
             DispatchQueue.main.async {
-                self.models = [LibraryModel]()
-                
                 for modelEntry in modelsReceived {
-                    let url = URL(string: (modelEntry[3])!)
-                    FileDownloader.loadFileSync(url: url!) { (path, error) in
-                        //print("added "+(modelEntry[2]!))
-                        self.updateLibrary()
+                    var isFound = false
+                    for defaultModel in self.all {
+                        if defaultModel.name == modelEntry[2]! {
+                            isFound = true
+                        }
+                    }
+                    if !isFound {
+                        let url = URL(string: (modelEntry[3])!)
+                        FileDownloader.loadFileSync(url: url!) { (path, error) in
+                            //print("added "+(modelEntry[2]!))
+                            self.updateLibrary()
+                        }
                     }
                 }
             }
         }.resume()
-        //print("SECOND COUNT")
-        //print(self.all.count)
-        //listAllFiles()
     }
 }
 

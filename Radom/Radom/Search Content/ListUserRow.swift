@@ -9,9 +9,11 @@ import SwiftUI
 
 struct ListUserRow: View {
     var users: Users
+    //@Binding var profileName: String
+    var profileName: String
     
     var body: some View {
-        NavigationLink(destination: PublicView(user:users)){
+        NavigationLink(destination: PublicView(user:users, profileName: profileName)){
             VStack(alignment: .leading) {
                 HStack {
                     if let username = users.username, let location = users.location {
