@@ -7,6 +7,6 @@
 ![Elevator Pitch](https://user-images.githubusercontent.com/42146044/164088255-9255c679-32fd-4846-ae81-724bb25d5ccf.png) <!-- MUST be placed in user-images.githubusercontent.com -->
 ![Team](/images/teamMembers.png)
 
-[demo_page]: https://youtu.be/sample
+[demo_page]: https://youtu.be/Csc0SXitXhQ
 [wiki_page]: https://github.com/jav099/PrettyRadom/wiki
 [process_page]: https://trello.com/b/76heE355/prettyradom
